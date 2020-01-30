@@ -1,57 +1,44 @@
 :root {
+/*Veneziano Coffee Roasters*/
     --Cream: #F6F4F2;
     --Teal: #425664;
     --Mocha: #C6AD8F;
-
+/*Slumber*/
     --Midnight: #051622;
     --Ocean: #1BA098;
     --Cappuccino: #DEB992;
-  }
-/*
-Veneziano Coffee Roasters
-Cream
-Teal
-Mocha
+}
 
-#F6F4F2
-#425664
-#C6AD8F
-*/
-
-/*
-Slumber
-Midnight
-Ocean
-Cappuccino
-
-#051622
-#1BA098
-#DEB992
-*/
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100vh;
+    background-color:yellowgreen;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Raleway', sans-serif;
     padding: 0;
-    margin: 0;
-    height: 100%;
+    margin: 0;   
     min-height: 100%;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;    
     grid-template-areas: "main-header"
                          "main-area"
                          "main-footer";
 }
-
+/*Main Header Styling*/
 .main-header {
     grid-area: main-header;
     width: 100%;
     height: 4.5rem;
-    background-color: #F6F4F2;
+    background-color: var(--Cream);
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
@@ -66,7 +53,7 @@ body {
     line-height: 4.5rem;
 
 }
-.main-header__brand{
+.main-header__brand {
     position: relative;
     top:0;
     left:0;
@@ -74,39 +61,87 @@ body {
     height:4.5rem;
     overflow: hidden;
 }
-.main-header__brand img{
+.main-header__brand img {
     position: absolute;
-   top: 50%;
-   left: 50%;
-   width: 250px;
-   height:250px;
-   margin-top: -125px;
-   margin-left: -125px;    
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height:250px;
+    margin-top: -125px;
+    margin-left: -125px;    
 }
 
 
-.main-header__item-list{
+.main-header__item-list {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.main-header__item{
+.main-header__item {
     padding: 0 1rem;
     font-size: 1.5rem;
 }
 
-.main-header__item a{
+.main-header__item a {
     text-decoration: none;
     color: #425664;
 }
 
-.main-area{
+/*Main Area Styling*/
+.main-area {
+    font-family: 'Source Sans Pro', sans-serif;
     grid-area: main-area;
+    background-color: var(--Midnight);
+    color: var(--Mocha);
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+.movie {
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 250px;
+    
+    overflow: hidden;
+}
+.movie__poster {
+    padding: 5px;
+    background-color: blue;
+    overflow: hidden;
     
 }
+.movie__poster img {    
+    width: 100%;
+}
 
-.main-footer{
+/*Footer Styling*/
+.main-footer {
     grid-area: main-footer;
+    background-color: var(--Ocean);
+    height: 2rem;
+}
+
+.main-footer__links {
+    list-style: none;
+    display:flex;
+    justify-content: center;
+    background-color: pink;
+}
+
+.main-footer__link {
+    margin: 0 2rem;
+    background-color: blue;
+}
+
+.main-footer__link a {
+    display:block;
+    text-decoration: none;
+    background-color: red;
 }
