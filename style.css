@@ -116,7 +116,8 @@ body {
     background-color: var(--MachaGreen);
     color: var(--Mocha);
     display: flex;
-    flex-flow: row;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -124,16 +125,23 @@ body {
     padding: 5px;
     margin: 5px;
     background-color: white;
+    justify-content: center;
+    width: 250px;    
+    overflow: hidden;
+    border-radius: 5px;
+    flex: none;
+}
+.movie__header {
+    height: 3rem;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 250px;
-    
-    overflow: hidden;
+    align-items: center;
+    text-align: center;
 }
 .movie__poster {
     padding: 5px;
-    background-color: blue;
+    background-color: var(--VolcanicRock);
     overflow: hidden;
     
 }
