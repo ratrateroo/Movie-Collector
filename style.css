@@ -111,21 +111,23 @@ body {
 
 /*Main Area Styling*/
 .main-area {
+    padding: 1rem 5rem;
     font-family: 'Source Sans Pro', sans-serif;
     grid-area: main-area;
     background-color: var(--MachaGreen);
-    box-shadow: inset 0px 0px 5px 5px rgba(39,36,37,1);
+    box-shadow: inset 0px 0px 5px 5px rgba(39,36,37,0.5);
     color: var(--Mocha);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 .movie {
     padding: 5px;
-    margin: 5px;
-    background-color: white;
+    margin: 10px;
+    background-color: var(--CreamyWhite);
+    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
     justify-content: center;
     width: 250px;    
     overflow: hidden;
@@ -139,6 +141,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: var(--VolcanicRock);
 }
 .movie__poster {
     padding: 5px;
@@ -148,8 +151,12 @@ body {
 }
 .movie__poster img {    
     width: 100%;
+    display: block;
 }
 
+.movie__footer {
+    color: var(--MachaGreen);
+}
 /*Footer Styling*/
 .main-footer {
     grid-area: main-footer;
