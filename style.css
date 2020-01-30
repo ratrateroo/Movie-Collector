@@ -114,6 +114,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     grid-area: main-area;
     background-color: var(--MachaGreen);
+    box-shadow: inset 0px 0px 5px 5px rgba(39,36,37,1);
     color: var(--Mocha);
     display: flex;
     flex-wrap: wrap;
@@ -154,22 +155,25 @@ body {
     grid-area: main-footer;
     background-color: var(--Ocean);
     height: 2rem;
+    line-height: 2rem;
+    background-color: var(--VolcanicRock);
 }
 
 .main-footer__links {
     list-style: none;
     display:flex;
     justify-content: center;
-    background-color: pink;
 }
 
 .main-footer__link {
     margin: 0 2rem;
-    background-color: blue;
 }
 
 .main-footer__link a {
     display:block;
     text-decoration: none;
-    background-color: red;
+    color: var(--CreamyWhite);    
+}
+.main-footer__link a:hover {
+    color: var(--GrassyGreen);
 }
