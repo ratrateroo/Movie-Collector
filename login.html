@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Collector</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+           
+            <ul class="main-header__item-list">
+                <li class="main-header__brand">
+                    <a href="index.html"><img src="logo.jpg" alt="brand"></a>
+                </li>
+                <li class="main-header__item">
+                    <a href="index.html">Movies</a>
+                </li>
+                
+                <li class="main-header__item">
+                    <a >My Collection</a>
+                </li>
+                
+            </ul>
+            <ul class="main-header__item-list">
+                <li class="main-header__item">
+                    <a href="login.html" class="active">Login</a>
+                </li>
+                <li class="main-header__item">
+                    <a href="signup.html" >Signup</a   >
+                </li>
+                <li class="main-header__item">
+                    <a href="logout.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-area">
+        <!-- Main area for the movie list -->
+        <!-- <h1>Main Area</h1> -->
+        <div class="signup-page">
+            <form action="index.html" class="signup-form">
+                <label for="title">Title</label>
+                <select id="title">
+                    <option value="mr">Mr.</option>
+                    <option value="ms">Ms.</option>
+                </select>
+                <label for="first-name">First name</label>
+                <input type="text" id="first-name" required>
+                <label for="last-name">Last name</label>
+                <input type="text" id="last-name" required>
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <div class="signup-form__checkbox">
+                    <input type="checkbox" id="agree-terms" required>
+                    <label for="agree-terms">Agree to
+                        <a href="#">Terms &amp; Conditions</a>
+                    </label>
+                </div>
+                <button type="submit" class="button">Sign Up</button>
+            </form>
+        </div>
+
+    </main>
+    <footer class="main-footer">
+        <!-- Footer area -->
+        <nav>
+            <ul class="main-footer__links">
+                <li class="main-footer__link">
+                    <a href="#">Support</a>
+                </li>
+                <li class="main-footer__link">
+                    <a href="#">Terms of Use</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
