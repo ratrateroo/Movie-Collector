@@ -96,12 +96,17 @@ body {
 }
 
 .main-header__item a:hover {
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    color: var(--CreamyWhite);
+    color: var(--VolcanicRock);
+    background-color: var(--CreamyWhite);
+    border-bottom: 5px solid var(--VolcanicRock);
 }
+
 .main-header__item a.active {
     border-bottom: 5px solid var(--GrassyGreen);
+}
+
+.main-header__item a.active:hover {
+    border-bottom: 5px solid var(--VolcanicRock);
 }
 
 /*Main Area Styling*/
