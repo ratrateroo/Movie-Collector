@@ -7,6 +7,12 @@
     --Midnight: #051622;
     --Ocean: #1BA098;
     --Cappuccino: #DEB992;
+/*Copie de Copie de eet*/
+    --AshFall: #8C8474;
+    --VolcanicRock: #272425;
+    --CreamyWhite: #F3F5D8;
+    --MachaGreen: #384001;
+    --GrassyGreen: #849609;
 }
 
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
@@ -17,7 +23,6 @@
 }
 html {
     height: 100vh;
-    background-color:yellowgreen;
     margin: 0;
     padding: 0;
 }
@@ -38,7 +43,7 @@ body {
     grid-area: main-header;
     width: 100%;
     height: 4.5rem;
-    background-color: var(--Cream);
+    background-color: var(--VolcanicRock);
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
@@ -85,15 +90,25 @@ body {
 }
 
 .main-header__item a {
+    padding: 0.5rem 1rem;
     text-decoration: none;
-    color: #425664;
+    color: var(--CreamyWhite);
+}
+
+.main-header__item a:hover {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--CreamyWhite);
+}
+.main-header__item a.active {
+    border-bottom: 5px solid var(--GrassyGreen);
 }
 
 /*Main Area Styling*/
 .main-area {
     font-family: 'Source Sans Pro', sans-serif;
     grid-area: main-area;
-    background-color: var(--Midnight);
+    background-color: var(--MachaGreen);
     color: var(--Mocha);
     display: flex;
     flex-flow: row;
