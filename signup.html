@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie Collector</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -27,7 +28,7 @@
             </ul>
             <ul class="main-header__item-list">
                 <li class="main-header__item">
-                    <a href="login.html">Login</a>
+                    <a href="login.html" >Login</a>
                 </li>
                 <li class="main-header__item">
                     <a href="signup.html" class="active">Signup</a   >
@@ -41,112 +42,29 @@
     <main class="main-area">
         <!-- Main area for the movie list -->
         <!-- <h1>Main Area</h1> -->
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>Bad Boys for Life</h3>
+        <div class="signup-page">
+            <form action="index.html" class="signup-form">
+                <label for="title">Title</label>
+                <select id="title">
+                    <option value="mr">Mr.</option>
+                    <option value="ms">Ms.</option>
+                </select>
+                <label for="first-name">First name</label>
+                <input type="text" id="first-name" required>
+                <label for="last-name">Last name</label>
+                <input type="text" id="last-name" required>
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <div class="signup-form__checkbox">
+                    <input type="checkbox" id="agree-terms" required>
+                    <label for="agree-terms">Agree to
+                        <a href="#">Terms &amp; Conditions</a>
+                    </label>
                 </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="badboysforlife.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2020</h4>
-                </div>
-            </div>
-        </div>
-        
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>1917</h3>
-                </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="1917.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2019</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>Ford v Ferrari</h3>
-                </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="fordvferrari.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2019</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>Ip Man 4: The Finale</h3>
-                </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="ipman4.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2019</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>Star Wars: The Rise of Skywalker</h3>
-                </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="starwars9.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2019</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="movie">
-            <div class="movie__header">
-                <div class="movie__title">
-                    <h3>Transformers: The Last Knight</h3>
-                </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <img src="transformersthelastknight.jpg" alt="movie-poster">
-                </div>
-            </div>
-            <div class="movie__footer">
-                <div class="movie__release-date">
-                    <h4>2017</h4>
-                </div>
-            </div>
+                <button type="submit" class="button">Sign Up</button>
+            </form>
         </div>
 
     </main>
