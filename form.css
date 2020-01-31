@@ -29,3 +29,10 @@
 .signup-form label {
     color: var(--VolcanicRock);
 }
+
+.signup-form input[id*="terms"],
+.signup-form input[id*="terms"] + label {
+    display: inline-block;
+    width: auto;
+    vertical-align: center;
+}
