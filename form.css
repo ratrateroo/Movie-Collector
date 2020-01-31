@@ -36,3 +36,9 @@
     width: auto;
     vertical-align: center;
 }
+
+.signup-form__checkbox input[type="checkbox"] {
+    background: #2ddf5c;
+    border: #0e4f1f;
+    background-color: red;
+}
