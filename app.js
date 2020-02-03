@@ -1,13 +1,24 @@
 const http = require('http');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use('/login' ,(req, res, next) => {
-    console.log('Middleware');
-    res.send('<h1>Login Page</h1>');
-});
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.use('/login', (req, res, next) => {
+    res.send('<form action="/movie" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>');
+  });
+  
+  app.post('/movie', (req, res, next) => {
+      console.log(req.body);
+      res.redirect('/');
+  });
+
+
 
 
 app.use('/', (req, res, next) => {
