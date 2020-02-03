@@ -4,9 +4,15 @@ const express = require('express');
 
 const app = express();
 
-app.use((req, res, next) => {
+app.use('/login' ,(req, res, next) => {
+    console.log('Middleware');
+    res.send('<h1>Login Page</h1>');
+});
+
+
+app.use('/', (req, res, next) => {
     console.log('Middleware Again');
-    res.send('<h1>Middleware Again</h1>');
+    res.send('<h1>Movie Page</h1>');
 });
 
 
