@@ -1,0 +1,55 @@
+.signup-form label,
+.signup-form input,
+.signup-form select {
+    display: block;
+    width: 100%;
+}
+
+.signup-page {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.signup-form {
+    width: 500px;
+    display: grid;
+    grid-auto-rows: 2rem;
+    grid-row-gap: 0.5rem;
+    padding: 15px;
+    margin: 10px;
+    background-color: var(--CreamyWhite);
+    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
+    border-radius: 5px;
+}
+
+.signup-form label {
+    color: var(--VolcanicRock);
+}
+
+.signup-form input[id*="terms"],
+.signup-form input[id*="terms"] + label {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+
+
+.signup-form input[type="checkbox"] {
+    border: 1px solid #ccc;
+    background: white;
+    width: 1rem;
+    height: 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.signup-form input[type="checkbox"]:checked {
+    background: var(--GrassyGreen);
+    border: #0e4f1f;
+}
