@@ -1,0 +1,186 @@
+:root {
+/*Veneziano Coffee Roasters*/
+    --Cream: #F6F4F2;
+    --Teal: #425664;
+    --Mocha: #C6AD8F;
+/*Slumber*/
+    --Midnight: #051622;
+    --Ocean: #1BA098;
+    --Cappuccino: #DEB992;
+/*Copie de Copie de eet*/
+    --AshFall: #8C8474;
+    --VolcanicRock: #272425;
+    --CreamyWhite: #F3F5D8;
+    --MachaGreen: #384001;
+    --GrassyGreen: #849609;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    padding: 0;
+    margin: 0;   
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;    
+    grid-template-areas: "main-header"
+                         "main-area"
+                         "main-footer";
+}
+/*Main Header Styling*/
+.main-header {
+    grid-area: main-header;
+    width: 100%;
+    height: 4.5rem;
+    background-color: var(--VolcanicRock);
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-header__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    line-height: 4.5rem;
+
+}
+.main-header__brand {
+    position: relative;
+    top:0;
+    left:0;
+    width: 250px;
+    height:4.5rem;
+    overflow: hidden;
+}
+.main-header__brand img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height:250px;
+    margin-top: -125px;
+    margin-left: -125px;    
+}
+
+
+.main-header__item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-header__item {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+}
+
+.main-header__item a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--CreamyWhite);
+}
+
+.main-header__item a:hover {
+    color: var(--VolcanicRock);
+    background-color: var(--CreamyWhite);
+    border-bottom: 5px solid var(--VolcanicRock);
+}
+
+.main-header__item a.active {
+    border-bottom: 5px solid var(--GrassyGreen);
+}
+
+.main-header__item a.active:hover {
+    border-bottom: 5px solid var(--VolcanicRock);
+}
+
+/*Main Area Styling*/
+.main-area {
+    padding: 1rem 5rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    grid-area: main-area;
+    background-color: var(--MachaGreen);
+    box-shadow: inset 0px 0px 5px 5px rgba(39,36,37,0.5);
+    color: var(--Mocha);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+.movie {
+    padding: 5px;
+    margin: 10px;
+    background-color: var(--CreamyWhite);
+    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
+    justify-content: center;
+    width: 200px;    
+    overflow: hidden;
+    border-radius: 5px;
+    flex: none;
+}
+.movie__header {
+    height: 3rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--VolcanicRock);
+}
+.movie__poster {
+    padding: 1px;
+    background-color: var(--VolcanicRock);
+    overflow: hidden;
+    
+}
+.movie__poster img {    
+    width: 100%;
+    display: block;
+}
+
+.movie__footer {
+    color: var(--MachaGreen);
+}
+/*Footer Styling*/
+.main-footer {
+    grid-area: main-footer;
+    background-color: var(--Ocean);
+    height: 2rem;
+    line-height: 2rem;
+    background-color: var(--VolcanicRock);
+}
+
+.main-footer__links {
+    list-style: none;
+    display:flex;
+    justify-content: center;
+}
+
+.main-footer__link {
+    margin: 0 2rem;
+}
+
+.main-footer__link a {
+    display:block;
+    text-decoration: none;
+    color: var(--CreamyWhite);    
+}
+.main-footer__link a:hover {
+    color: var(--GrassyGreen);
+}
