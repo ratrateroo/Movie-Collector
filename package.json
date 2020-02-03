@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/ratrateroo/Movie-Collector/issues"
   },
-  "homepage": "https://github.com/ratrateroo/Movie-Collector#readme"
+  "homepage": "https://github.com/ratrateroo/Movie-Collector#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }
