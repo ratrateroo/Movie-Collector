@@ -12,9 +12,12 @@ router.get('/add-movies', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
   });
   
-router.post('/movie', (req, res, next) => {
+router.post('/add-movies', (req, res, next) => {
       console.log(req.body);
-      //res.send('<h1>Movie '+ req.body.title +' Page</h1>');
+      movies.push({ 
+        title: req.body.title,
+        year: req.body.year
+       });
       res.redirect('/');
   });
 

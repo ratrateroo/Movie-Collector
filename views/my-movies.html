@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movie Collector</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/form.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,18 +15,18 @@
            
             <ul class="main-header__item-list">
                 <li class="main-header__brand">
-                    <a class="active" href="movies.html"><img src="../logo.jpg" alt="brand"></a>
+                    <a class="active" href="movies.html"><img src="logo.jpg" alt="brand"></a>
                 </li>
                 <li class="main-header__item">
                     <a  href="/">Movies</a>
                 </li>
                 
                 <li class="main-header__item">
-                    <a href="/my-movies">My Collection</a>
+                    <a class="active" href="/my-movies">My Collection</a>
                 </li>
 
                 <li class="main-header__item">
-                    <a class="active" href="/admin/add-movies">Add Movies</a>
+                    <a href="/admin/add-movies">Add Movies</a>
                 </li>
                 
             </ul>
@@ -44,20 +44,29 @@
         </nav>
     </header>
     <main class="main-area">
-        <div class="signup-page">
-            <form action="/admin/add-movies" class="signup-form" method="POST">
-                
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-
-                <label for="year">Year</label>
-                <input type="text" id="year" name="year"required>
-
-                <button type="submit" class="button">Add Movie</button>
-            </form>
+        <!-- Main area for the movie list -->
+        <!-- <h1>Main Area</h1> -->
+        <div class="movie">
+            <div class="movie__header">
+                <div class="movie__title">
+                    <h3>Title</h3>
+                </div>
+            </div>
+            <div class="movie__body">
+                <div class="movie__poster">
+                    <img src="badboysforlife.jpg" alt="movie-poster">
+                </div>
+            </div>
+            <div class="movie__footer">
+                <div class="movie__release-date">
+                    <h4>Year</h4>
+                </div>
+            </div>
         </div>
-    </main>
+        
+        
 
+    </main>
     <footer class="main-footer">
         <!-- Footer area -->
         <nav>
@@ -76,7 +85,5 @@
             </ul>
         </nav>
     </footer>
-
 </body>
-
 </html>
