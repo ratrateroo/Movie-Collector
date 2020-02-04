@@ -13,8 +13,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/my-movies', (req, res, next) => {
-    console.log('my-movies.html', adminData.movies);
-    res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
+    // console.log('my-movies.html', adminData.movies);
+    // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
+    res.render('my-movies');
 });
 
 
