@@ -26,19 +26,22 @@ header.main-header
       li.main-header__item
         a(href='logout.html') Logout
 main.main-area
-  // Main area for the movie list
-  // <h1>Main Area</h1>
-  each movie in movies
-    .movie
-        .movie__header
-            .movie__title
-                h3 #{movie.title}
-        .movie__body
-            .movie__poster
-                img(src='../badboysforlife.jpg' alt='movie-poster')
-        .movie__footer
-            .movie__release-date
-                h4 #{movie.year}
+    // Main area for the movie list
+    // <h1>Main Area</h1>
+    if movies.length > 0
+        each movie in movies
+            .movie
+                .movie__header
+                    .movie__title
+                        h3 #{movie.title}
+                .movie__body
+                    .movie__poster
+                        img(src='../badboysforlife.jpg' alt='movie-poster')
+                .movie__footer
+                    .movie__release-date
+                        h4 #{movie.year}
+    else
+        h1 No Movies
 footer.main-footer
   // Footer area
   nav
