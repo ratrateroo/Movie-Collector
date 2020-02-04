@@ -3,7 +3,7 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title Movie Collector
+  title #{docTitle}
   link(rel='stylesheet' href='/css/style.css')
   link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap' rel='stylesheet')
 header.main-header
@@ -28,16 +28,17 @@ header.main-header
 main.main-area
   // Main area for the movie list
   // <h1>Main Area</h1>
-  .movie
-    .movie__header
-      .movie__title
-        h3 Title
-    .movie__body
-      .movie__poster
-        img(src='badboysforlife.jpg' alt='movie-poster')
-    .movie__footer
-      .movie__release-date
-        h4 Year
+  each movie in movies
+    .movie
+        .movie__header
+            .movie__title
+                h3 #{movie.title}
+        .movie__body
+            .movie__poster
+                img(src='../badboysforlife.jpg' alt='movie-poster')
+        .movie__footer
+            .movie__release-date
+                h4 #{movie.year}
 footer.main-footer
   // Footer area
   nav

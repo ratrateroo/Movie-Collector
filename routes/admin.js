@@ -9,7 +9,8 @@ const router = express.Router();
 const movies = [];
 
 router.get('/add-movies', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
+    //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
+    res.render('add-movies', { docTitle: 'Add Movies' });
   });
   
 router.post('/add-movies', (req, res, next) => {
@@ -18,7 +19,8 @@ router.post('/add-movies', (req, res, next) => {
         title: req.body.title,
         year: req.body.year
        });
-      res.redirect('/');
+      res.redirect('/my-movies');
+      
   });
 
 //module.exports = router;

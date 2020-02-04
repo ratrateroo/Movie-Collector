@@ -9,13 +9,15 @@ const adminData = require('./admin');
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'movies.html'));
+    //res.sendFile(path.join(rootDir, 'views', 'movies.html'));
+    res.render('movies', { docTitle: 'Movies' });
 });
 
 router.get('/my-movies', (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    res.render('my-movies');
+    const movies = adminData.movies;
+    res.render('my-movies', { movies: movies, docTitle: 'My Movies' });
 });
 
 
