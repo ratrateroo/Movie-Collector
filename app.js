@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 const moviesRoutes = require('./routes/movies');
 
 app.use(bodyParser.urlencoded({
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminRoutes);
+app.use('/admin', adminData.routes);
 app.use(moviesRoutes);
 
 app.use((req, res, next) => {

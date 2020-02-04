@@ -6,6 +6,8 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+const movies = [];
+
 router.get('/add-movies', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
   });
@@ -16,4 +18,6 @@ router.post('/movie', (req, res, next) => {
       res.redirect('/');
   });
 
-module.exports = router;
+//module.exports = router;
+exports.routes = router;
+exports.movies = movies;
