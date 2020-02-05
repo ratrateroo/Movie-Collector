@@ -2,31 +2,16 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../util/path');
+const moviesController = require('../controllers/movies');
 
 const router = express.Router();
 
-const movies = [];
+//const movies = [];
 
-router.get('/add-movies', (req, res, next) => {
-    //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
-    res.render('add-movies', { 
-      pageTitle: 'Add Movies', 
-      path: '/admin/add-movies',
-      activeAddMovies: true,
-      formsCSS:true });
-  });
+router.get('/add-movies', moviesController.getAddMovies);
   
-router.post('/add-movies', (req, res, next) => {
-      console.log(req.body);
-      movies.push({ 
-        title: req.body.title,
-        year: req.body.year
-       });
-      res.redirect('/my-movies');
-      
-  });
+router.post('/add-movies', moviesController.postAddMovies);
 
-//module.exports = router;
-exports.routes = router;
-exports.movies = movies;
+module.exports = router;
+// exports.routes = router;
+// exports.movies = movies;

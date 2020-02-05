@@ -13,7 +13,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const moviesRoutes = require('./routes/movies');
 
 app.use(bodyParser.urlencoded({
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(moviesRoutes);
 
 app.use((req, res, next) => {
