@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    title Movie Collector
+    title #{pageTitle}
     link(rel="stylesheet" href="/css/style.css")
     block styles
   body
@@ -15,11 +15,11 @@ html(lang="en")
             a.active(href="movies.html")
               img(src="../logo.jpg" alt="brand")
           li.main-header__item
-            a(href="/") Movies
+            a(href="/", class=(path === '/' ? 'active' : '')) Movies
           li.main-header__item
-            a(href="/my-movies") My Collection
+            a(href="/my-movies", class=(path === '/my-movies' ? 'active' : '')) My Collection
           li.main-header__item
-            a(href="/admin/add-movies") Add Movies
+            a(href="/admin/add-movies", class=(path === '/admin/add-movies' ? 'active' : '')) Add Movies
         ul.main-header__item-list
           li.main-header__item
             a(href="login.html") Login

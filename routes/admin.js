@@ -10,7 +10,7 @@ const movies = [];
 
 router.get('/add-movies', (req, res, next) => {
     //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
-    res.render('add-movies', { docTitle: 'Add Movies' });
+    res.render('add-movies', { docTitle: 'Add Movies', path: '/admin/add-movies' });
   });
   
 router.post('/add-movies', (req, res, next) => {

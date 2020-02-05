@@ -1,31 +1,7 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title #{docTitle}
-  link(rel='stylesheet' href='/css/style.css')
-  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap' rel='stylesheet')
-header.main-header
-  nav.main-header__nav
-    ul.main-header__item-list
-      li.main-header__brand
-        a.active(href='movies.html')
-          img(src='/logo.jpg' alt='brand')
-      li.main-header__item
-        a.active(href='/') Movies
-      li.main-header__item
-        a(href='/my-movies') My Collection
-      li.main-header__item
-        a(href='/admin/add-movies') Add Movies
-    ul.main-header__item-list
-      li.main-header__item
-        a(href='login.html') Login
-      li.main-header__item
-        a(href='signup.html') Signup
-      li.main-header__item
-        a(href='logout.html') Logout
-main.main-area
+extends layouts/main-layout.pug
+
+
+block content
   // Main area for the movie list
   // <h1>Main Area</h1>
   .movie
@@ -88,14 +64,3 @@ main.main-area
     .movie__footer
       .movie__release-date
         h4 2017
-footer.main-footer
-  // Footer area
-  nav
-    ul.main-footer__links
-      li.main-footer__link
-        a(href='#') Support
-      li.main-footer__link
-        a(href='#') Terms of Use
-    ul.main-footer__links
-      li.main-footer__link
-        p All Rights Reserved &copy; 2020
