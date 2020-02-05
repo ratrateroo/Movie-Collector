@@ -2,37 +2,7 @@
 </head>
 <body>
     <header class="main-header">
-        <nav class="main-header__nav">
-           
-            <ul class="main-header__item-list">
-                <li class="main-header__brand">
-                    <a href="movies.html"><img src="../logo.jpg" alt="brand"></a>
-                </li>
-                <li class="main-header__item">
-                    <a  href="/">Movies</a>
-                </li>
-                
-                <li class="main-header__item">
-                    <a href="/my-movies">My Collection</a>
-                </li>
-
-                <li class="main-header__item">
-                    <a href="/admin/add-movies">Add Movies</a>
-                </li>
-                
-            </ul>
-            <ul class="main-header__item-list">
-                <li class="main-header__item">
-                    <a href="login.html">Login</a>
-                </li>
-                <li class="main-header__item">
-                    <a href="signup.html">Signup</a   >
-                </li>
-                <li class="main-header__item">
-                    <a href="logout.html">Logout</a>
-                </li>
-            </ul>
-        </nav>
+        <%- include('includes/navigation.ejs') %>
     </header>
     <main class="main-area">
         <h1>Page not found!</h1>
