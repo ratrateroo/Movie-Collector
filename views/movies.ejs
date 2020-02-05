@@ -1,46 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><%= pageTitle %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<%- include('includes/head.ejs') %>
 </head>
 <body>
     <header class="main-header">
-        <nav class="main-header__nav">
-           
-            <ul class="main-header__item-list">
-                <li class="main-header__brand">
-                    <a class="active" href="movies.html"><img src="/logo.jpg" alt="brand"></a>
-                </li>
-                <li class="main-header__item">
-                    <a class="active" href="/">Movies</a>
-                </li>
-                
-                <li class="main-header__item">
-                    <a href="/my-movies">My Collection</a>
-                </li>
-
-                <li class="main-header__item">
-                    <a href="/admin/add-movies">Add Movies</a>
-                </li>
-                
-            </ul>
-            <ul class="main-header__item-list">
-                <li class="main-header__item">
-                    <a href="login.html">Login</a>
-                </li>
-                <li class="main-header__item">
-                    <a href="signup.html">Signup</a   >
-                </li>
-                <li class="main-header__item">
-                    <a href="logout.html">Logout</a>
-                </li>
-            </ul>
-        </nav>
+        <%- include('includes/navigation.ejs') %>
     </header>
     <main class="main-area">
         <!-- Main area for the movie list -->
@@ -154,23 +116,7 @@
         </div>
 
     </main>
-    <footer class="main-footer">
-        <!-- Footer area -->
-        <nav>
-            <ul class="main-footer__links">
-                <li class="main-footer__link">
-                    <a href="#">Support</a>
-                </li>
-                <li class="main-footer__link">
-                    <a href="#">Terms of Use</a>
-                </li>
-            </ul>
-            <ul class="main-footer__links">
-                <li class="main-footer__link">
-                    <p>All Rights Reserved &copy; 2020</p>
-                </li>
-            </ul>
-        </nav>
-    </footer>
-</body>
-</html>
+<%- include('includes/end.ejs') %>
+
+    
+   
