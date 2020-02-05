@@ -4,15 +4,15 @@
             <a href="movies.html"><img src="../logo.jpg" alt="brand"></a>
         </li>
         <li class="main-header__item">
-            <a  href="/">Movies</a>
+            <a class="<%= path === '/'? 'active': ''%>" href="/">Movies</a>
         </li>
         
         <li class="main-header__item">
-            <a href="/my-movies">My Collection</a>
+            <a class="<%= path === '/my-movies'? 'active': ''%>" href="/my-movies">My Collection</a>
         </li>
 
         <li class="main-header__item">
-            <a href="/admin/add-movies">Add Movies</a>
+            <a class="<%= path === '/admin/add-movies'? 'active': ''%>" href="/admin/add-movies">Add Movies</a>
         </li>        
     </ul>
     <ul class="main-header__item-list">
