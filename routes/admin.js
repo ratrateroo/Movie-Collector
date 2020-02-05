@@ -11,7 +11,7 @@ const movies = [];
 router.get('/add-movies', (req, res, next) => {
     //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
     res.render('add-movies', { 
-      docTitle: 'Add Movies', 
+      pageTitle: 'Add Movies', 
       path: '/admin/add-movies',
       activeAddMovies: true,
       formsCSS:true });
