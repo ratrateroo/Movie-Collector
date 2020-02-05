@@ -1,4 +1,4 @@
-const movies = [];
+const Movie = require('../models/movie');
 
 exports.getAddMovies = (req, res, next) => {
     //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
@@ -10,17 +10,15 @@ exports.getAddMovies = (req, res, next) => {
   };
 
 exports.postAddMovies = (req, res, next) => {
-    console.log(req.body);
-    movies.push({ 
-      title: req.body.title,
-      year: req.body.year
-     });
+    const movie = new Movie(req.body.title, req.body.year);
+    movie.save();
     res.redirect('/my-movies');    
 };
 
 exports.getMovies = (req, res, next) => {
-    //res.sendFile(path.join(rootDir, 'views', 'movies.html'));
+    const movies = Movie.fetchAll();
     res.render('movies', { 
+        movies: movies,
         pageTitle: 'Movies', 
         path: '/',
         activeMovies: true});
@@ -29,7 +27,7 @@ exports.getMovies = (req, res, next) => {
 exports.getMyMovies =  (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    
+    const movies = Movie.fetchAll();
     res.render('my-movies', { 
         movies: movies, 
         pageTitle: 'My Movies', 
