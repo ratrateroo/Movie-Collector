@@ -1,0 +1,26 @@
+
+        {{#if hasMovies }}
+            <div class="movie">
+                {{#each movies}}
+                <div class="movie__header">
+                    <div class="movie__title">
+                        <h3>{{ this.title }}</h3>
+                    </div>
+                </div>
+                <div class="movie__body">
+                    <div class="movie__poster">
+                        <img src="badboysforlife.jpg" alt="movie-poster">
+                    </div>
+                </div>
+                <div class="movie__footer">
+                    <div class="movie__release-date">
+                        <h4>{{ this.year }}</h4>
+                    </div>
+                </div>
+                {{/each }}
+            </div>    
+        {{ else }}
+             <h1>No Movies</h1>
+        {{/if }}
+
+   

@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movie Collector</title>
+    <title>{{ pageTitle }}</title>
     <link rel="stylesheet" href="/css/style.css">
+    {{#if formsCSS}}
+        <link rel="stylesheet" href="/css/form.css">
+    {{/if}}
 </head>
 <body>
     <header class="main-header">
@@ -13,18 +16,18 @@
            
             <ul class="main-header__item-list">
                 <li class="main-header__brand">
-                    <a class="active" href="movies.html"><img src="../logo.jpg" alt="brand"></a>
+                    <a href="movies.html"><img src="../logo.jpg" alt="brand"></a>
                 </li>
                 <li class="main-header__item">
-                    <a  href="/">Movies</a>
+                    <a class="{{#if activeMovies}}active{{/if}}" href="/">Movies</a>
                 </li>
                 
                 <li class="main-header__item">
-                    <a href="/my-movies">My Collection</a>
+                    <a class="{{#if activeMyMovies}}active{{/if}}" href="/my-movies">My Collection</a>
                 </li>
 
                 <li class="main-header__item">
-                    <a href="/admin/add-movies">Add Movies</a>
+                    <a class="{{#if activeAddMovies}}active{{/if}}" href="/admin/add-movies">Add Movies</a>
                 </li>
                 
             </ul>
@@ -42,7 +45,7 @@
         </nav>
     </header>
     <main class="main-area">
-        <h1>Page not found!</h1>
+        {{{ body }}}
     </main>
 
     <footer class="main-footer">
