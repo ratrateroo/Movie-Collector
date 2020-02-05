@@ -27,11 +27,13 @@ exports.getMovies = (req, res, next) => {
 exports.getMyMovies =  (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    const movies = Movie.fetchAll();
-    res.render('my-movies', { 
-        movies: movies, 
-        pageTitle: 'My Movies', 
-        path: '/my-movies',
-        activeMyMovies: true
+    Movie.fetchAll(movies => {
+        res.render('my-movies', { 
+            movies: movies, 
+            pageTitle: 'My Movies', 
+            path: '/my-movies',
+            activeMyMovies: true
+        });
     });
+    
 }
