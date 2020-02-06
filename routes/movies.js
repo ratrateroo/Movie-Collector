@@ -9,5 +9,6 @@ const adminData = require('./admin');
 const router = express.Router();
 
 router.get('/', moviesController.getMovies);
+router.get('/movies/:movieId', moviesController.getMovies);
 
 module.exports = router;
