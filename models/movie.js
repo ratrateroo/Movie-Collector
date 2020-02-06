@@ -38,4 +38,11 @@ module.exports = class Movie {
     static fetchAll(cb) {
         getMoviesFromFile(cb);
     }
+
+    static findById(id, cb) {
+        getProductsFromFile(movies => {
+          const movie = movie.find(m => m.id === id);
+          cb(movie);
+        });
+      }
 };

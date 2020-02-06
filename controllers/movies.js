@@ -18,3 +18,13 @@ exports.getMovies = (req, res, next) => {
     });
     
 };
+
+exports.getMovie = (req, res, next) => {
+    
+    const movieId = req.params.movieId;
+    Movie.findById(movieId, movie => {
+        console.log(movie);
+    });
+    res.redirect('/');
+    
+};
