@@ -24,6 +24,12 @@ exports.getMovies = (req, res, next) => {
         activeMovies: true});
 };
 
+exports.getMovie = (req, res, next) => {
+    const movieId = req.params.movieId;
+    console.log(movieId);
+    res.redirect('/');
+}
+
 exports.getMyMovies =  (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
