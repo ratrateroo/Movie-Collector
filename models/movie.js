@@ -8,8 +8,7 @@ const m = path.join(
     'movies.json'
     );
 
-const getMoviesFromFile = cb => {
-    
+const getMoviesFromFile = cb => {    
     fs.readFile(m, (error, fileContent) => {
         if (error) {
          cb([]);
@@ -19,7 +18,7 @@ const getMoviesFromFile = cb => {
     });
 };
 
-module.exports = class Product {
+module.exports = class Movie {
     constructor(title, year) {
         this.title = title;
         this.year = year;
@@ -37,4 +36,4 @@ module.exports = class Product {
     static fetchAll(cb) {
         getMoviesFromFile(cb);
     }
-}
+};

@@ -12,7 +12,7 @@ exports.getAddMovies = (req, res, next) => {
 exports.postAddMovies = (req, res, next) => {
     const movie = new Movie(req.body.title, req.body.year);
     movie.save();
-    res.redirect('/my-movies');    
+    res.redirect('admin/my-movies');    
 };
 
 exports.getMyMovies =  (req, res, next) => {
@@ -22,7 +22,7 @@ exports.getMyMovies =  (req, res, next) => {
         res.render('admin/my-movies', { 
             movies: movies, 
             pageTitle: 'My Movies', 
-            path: '/my-movies',
+            path: 'admin/my-movies',
             activeMyMovies: true
         });
     });
