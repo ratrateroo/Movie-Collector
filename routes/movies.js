@@ -12,6 +12,7 @@ router.get('/', moviesController.getMovies);
 
 router.get('/my-movies', moviesController.getMyMovies);
 
+router.get('/')
 
 
 module.exports = router;

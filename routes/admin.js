@@ -2,15 +2,17 @@ const path = require('path');
 
 const express = require('express');
 
+const adminController = require('../controllers/admin');
+
 const moviesController = require('../controllers/movies');
 
 const router = express.Router();
 
 //const movies = [];
 
-router.get('/add-movies', moviesController.getAddMovies);
+router.get('/add-movies', adminController.getAddMovies);
   
-router.post('/add-movies', moviesController.postAddMovies);
+router.post('/add-movies', adminController.postAddMovies);
 
 module.exports = router;
 // exports.routes = router;

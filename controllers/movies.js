@@ -1,28 +1,10 @@
 const Movie = require('../models/movie');
 
-exports.getAddMovies = (req, res, next) => {
-    //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
-    res.render('add-movies', { 
-      pageTitle: 'Add Movies', 
-      path: '/admin/add-movies',
-      activeAddMovies: true,
-      formsCSS:true });
-  };
 
-exports.postAddMovies = (req, res, next) => {
-    const movie = new Movie(req.body.title, req.body.year);
-    movie.save();
-    res.redirect('/my-movies');    
-};
 
-exports.getMovies = (req, res, next) => {
-    const movies = Movie.fetchAll();
-    res.render('movies', { 
-        movies: movies,
-        pageTitle: 'Movies', 
-        path: '/',
-        activeMovies: true});
-};
+
+
+
 
 exports.getMovie = (req, res, next) => {
     const movieId = req.params.movieId;
@@ -30,16 +12,11 @@ exports.getMovie = (req, res, next) => {
     res.redirect('/');
 }
 
-exports.getMyMovies =  (req, res, next) => {
-    // console.log('my-movies.html', adminData.movies);
-    // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    Movie.fetchAll(movies => {
-        res.render('my-movies', { 
-            movies: movies, 
-            pageTitle: 'My Movies', 
-            path: '/my-movies',
-            activeMyMovies: true
-        });
-    });
-    
-}
+exports.getMovies = (req, res, next) => {
+    const movies = Movie.fetchAll();
+    res.render('admin/movies', { 
+        movies: movies,
+        pageTitle: 'Movies', 
+        path: '/admin/movies',
+        activeMovies: true});
+};
