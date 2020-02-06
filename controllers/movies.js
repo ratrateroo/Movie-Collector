@@ -1,11 +1,5 @@
 const Movie = require('../models/movie');
 
-
-
-
-
-
-
 exports.getMovie = (req, res, next) => {
     const movieId = req.params.movieId;
     console.log(movieId);
@@ -14,9 +8,9 @@ exports.getMovie = (req, res, next) => {
 
 exports.getMovies = (req, res, next) => {
     const movies = Movie.fetchAll();
-    res.render('admin/movies', { 
+    res.render('movies', { 
         movies: movies,
         pageTitle: 'Movies', 
-        path: '/admin/movies',
+        path: '/movies',
         activeMovies: true});
 };
