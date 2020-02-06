@@ -40,8 +40,8 @@ module.exports = class Movie {
     }
 
     static findById(id, cb) {
-        getProductsFromFile(movies => {
-          const movie = movie.find(m => m.id === id);
+        getMoviesFromFile(movies => {
+          const movie = movies.find(m => m.id === id);
           cb(movie);
         });
       }
