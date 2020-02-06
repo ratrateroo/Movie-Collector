@@ -19,8 +19,9 @@ const getMoviesFromFile = cb => {
 };
 
 module.exports = class Movie {
-    constructor(title, year) {
+    constructor(title, imageUrl, year) {
         this.title = title;
+        this.imageUrl = imageUrl;
         this.year = year;
     }
 
