@@ -26,6 +26,7 @@ module.exports = class Movie {
     }
 
     save() {
+        this.id = Math.random().toString();
         getMoviesFromFile(movies => {
             movies.push(this);
             fs.writeFile(m, JSON.stringify(movies), (error) => {

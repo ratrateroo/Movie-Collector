@@ -17,8 +17,9 @@
                     </div>
                     <div class="movie__body">
                         <div class="movie__poster">
-                            <img src="<%= movie.title %>
-                            " alt="movie-poster">
+                            <a href="/movies/<%= movie.id %>">
+                                <img src="<%= movie.imageUrl %>" alt="movie-poster">
+                            </a>
                         </div>
                     </div>
                     <div class="movie__footer">
