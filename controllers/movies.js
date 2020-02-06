@@ -7,10 +7,14 @@ const Movie = require('../models/movie');
 // }
 
 exports.getMovies = (req, res, next) => {
-    const movies = Movie.fetchAll();
-    res.render('movies/movies', { 
-        movies: movies,
-        pageTitle: 'Movies', 
-        path: 'movies/movies',
-        activeMovies: true});
+    
+    Movie.fetchAll(movies => {
+        res.render('movies/movies', { 
+            movies: movies,
+            pageTitle: 'Movies', 
+            path: 'movies/movies',
+            activeMovies: true
+        });
+    });
+    
 };

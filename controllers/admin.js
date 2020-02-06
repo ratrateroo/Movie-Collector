@@ -12,7 +12,7 @@ exports.getAddMovies = (req, res, next) => {
 exports.postAddMovies = (req, res, next) => {
     const movie = new Movie(req.body.title, req.body.year);
     movie.save();
-    res.redirect('admin/my-movies');    
+    res.redirect('my-movies');    
 };
 
 exports.getMyMovies =  (req, res, next) => {

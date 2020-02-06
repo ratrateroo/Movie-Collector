@@ -14,6 +14,7 @@ router.get('/add-movies', adminController.getAddMovies);
   
 router.post('/add-movies', adminController.postAddMovies);
 
+router.get('/my-movies', adminController.getMyMovies);
 module.exports = router;
 // exports.routes = router;
 // exports.movies = movies;
