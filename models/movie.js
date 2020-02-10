@@ -1,3 +1,5 @@
+const getDb = require('../util/database').getDb;
+
 //const movies = [];
 const fs = require('fs');
 const path = require('path');
@@ -19,20 +21,21 @@ const getMoviesFromFile = cb => {
 };
 
 module.exports = class Movie {
-    constructor(title, imageUrl, year) {
+    constructor(title, year, imageUrl = "badboysforlife.jpg") {
         this.title = title;
         this.imageUrl = imageUrl;
         this.year = year;
     }
 
     save() {
-        this.id = Math.random().toString();
-        getMoviesFromFile(movies => {
-            movies.push(this);
-            fs.writeFile(m, JSON.stringify(movies), (error) => {
-                console.log(error);
-            });            
-        });        
+        const db = getDb();
+        db.collection('movies').insertOne(this)
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.log(error);
+        });      
     }
 
     static fetchAll(cb) {

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 //const expressHbs = require('express-handlebars');
 
 const errorController = require('./controllers/error');
-const mongoConnect = require('./util/database');
+const mongoConnect = require('./util/database').mongoConnect;
 const app = express();
 
 //app.engine('handlebars', expressHbs());
@@ -27,7 +27,6 @@ app.use(moviesRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect((client) => {
-    console.log(client);
+mongoConnect(() => {    
     app.listen(3000);
 });
