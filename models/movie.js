@@ -29,7 +29,8 @@ module.exports = class Movie {
 
     save() {
         const db = getDb();
-        db.collection('movies').insertOne(this)
+        return db.collection('movies')
+        .insertOne(this)
         .then(result => {
             console.log(result);
         })

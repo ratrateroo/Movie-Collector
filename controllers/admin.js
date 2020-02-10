@@ -10,9 +10,19 @@ exports.getAddMovies = (req, res, next) => {
 };
 
 exports.postAddMovies = (req, res, next) => {
-    const movie = new Movie(req.body.title, req.body.year);
-    movie.save();
-    res.redirect('my-movies');    
+    const title = req.body.title;
+    const year = req.body.year;
+    const imageUrl = req.body.imageUrl;
+    const movie = new Movie(title, year, imageUrl);
+    movie.save()
+    .then(result => {
+        console.log('Added Movie');
+        res.redirect('my-movies');  
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+       
 };
 
 exports.getMyMovies =  (req, res, next) => {
