@@ -17,15 +17,23 @@ class User {
     }
 
     addToFavorite(movie) {
-        // const favoriteList = this.favorite.items.findIndex(favoriteMovie => {
-        //     return favoriteMovie._id === movie._id;
-        // });
-        const updatedFavorite = { items: [{...movie}] };
-        const db = getDb();
-        return db.collection('users').updateOne(
-            { _id: new ObjectId(this._id) },
-            { $set: { favorite: updatedFavorite } }
-            );
+        const favoriteMovieExist = this.favorite.items.findIndex(favoriteMovie => {
+            return favoriteMovie.movieId.toString() === movie._id.toString();
+        });
+        let newQuantity = 1;
+
+        if (favoriteMovieExist) {
+            return;
+        }else{
+            const updatedFavorite = { items: [{movieId: new ObjectId(movie._id)}] };
+            const db = getDb();
+            return db.collection('users').updateOne(
+                { _id: new ObjectId(this._id) },
+                { $set: { favorite: updatedFavorite } }
+                );
+        }
+
+        
     }
 
     static findById(userId) {

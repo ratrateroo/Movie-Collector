@@ -48,7 +48,7 @@ exports.getFavorite =  (req, res, next) => {
         res.render('movies/favorite', { 
             movies: movies, 
             pageTitle: 'My Favorite', 
-            path: '/favorite',
+            path: 'movies/favorite',
             activeMyMovies: true
         });
     })
