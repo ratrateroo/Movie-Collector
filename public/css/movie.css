@@ -1,33 +1,42 @@
-.movie {
-    padding: 5px;
-    margin: 10px;
-    background-color: var(--CreamyWhite);
-    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
-    justify-content: center;
-    width: 80vw;    
-    overflow: hidden;
-    border-radius: 5px;
-    flex: none;
-}
-.movie__header {
-    height: 3rem;
-    display: flex;
-    flex-flow: column;
+.main-area {
+    display:flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    color: var(--VolcanicRock);
 }
-.movie__poster {
-    padding: 1px;
-    background-color: var(--VolcanicRock);
-    overflow: hidden;
-    
-}
-.movie__poster img {    
-    width: 100%;
-    display: block;
+.movie-card {
+    padding: 1rem;
+    background-color: var(--CreamyWhite);
+    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
+    justify-content: stretch;
+    align-items: stretch;
+    flex-direction: row;
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+    display:flex;
 }
 
-.movie__footer {
-    color: var(--MachaGreen);
+.movie__image {
+    width: 40vh;
+    padding: 0;
+    background-color: var(--VolcanicRock);
+    overflow: hidden;
+}
+
+.movie__poster img{
+    display: block;
+    width: 100%;
+    height: auto;
+    
+}
+
+.movie__details {
+    flex-grow: 100;
+    padding: 1.5rem;
+    background-color: var(--VolcanicRock);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+

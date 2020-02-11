@@ -9,23 +9,21 @@
         <!-- Main area for the movie list -->
         <!-- <h1>Main Area</h1> -->
         <div class="movie-card">
-            <div class="movie__header">
+            <div class="movie__image">
+                <div class="movie__poster">
+                    
+                        <img src="../<%= movie.imageUrl %>" alt="<%= movie._id %>">
+                    
+                </div>                
+            </div>
+            <div class="movie__details">
                 <div class="movie__title">
                     <h3><%= movie.title %></h3>
                 </div>
-            </div>
-            <div class="movie__body">
-                <div class="movie__poster">
-                    <a href="/movies/<%= movie._id %>">
-                        <img src="../<%= movie.imageUrl %>" alt="movie-poster">
-                    </a>
-                </div>
-            </div>
-            <div class="movie__footer">
                 <div class="movie__release-date">
                     <h4><%= movie.year %></h4>
                 </div>
-            </div>
+            </div>            
         </div>
         
         
