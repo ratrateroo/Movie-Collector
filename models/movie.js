@@ -51,10 +51,16 @@ module.exports = class Movie {
         });
     }
 
-    static findById(id, cb) {
-        getMoviesFromFile(movies => {
-          const movie = movies.find(m => m.id === id);
-          cb(movie);
-        });
+    static findById(movieId) {
+        const db = getDb();
+        return db.collection('movies').find({ _id: movieId })
+        .next()
+        .then(movie => {
+            console.log(movie);
+            return movie
+        })
+        .catch(error => {
+            console.log(error);
+        });;
       }
 };
