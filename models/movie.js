@@ -1,3 +1,4 @@
+const mongodb = require('mongodb');
 const getDb = require('../util/database').getDb;
 
 //const movies = [];
@@ -53,7 +54,8 @@ module.exports = class Movie {
 
     static findById(movieId) {
         const db = getDb();
-        return db.collection('movies').find({ _id: movieId })
+        return db.collection('movies')
+        .find({ _id: new mongodb.ObjectId(movieId) })
         .next()
         .then(movie => {
             console.log(movie);

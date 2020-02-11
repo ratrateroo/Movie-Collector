@@ -22,9 +22,20 @@ exports.getMovies = (req, res, next) => {
 exports.getMovie = (req, res, next) => {
     
     const movieId = req.params.movieId;
-    Movie.findById(movieId, movie => {
-        console.log(movie);
-    });
-    res.redirect('/');
+    // Movie.findById(movieId, movie => {
+    //     console.log(movie);
+    // });
+    // res.redirect('/');
+
+    Movie.findById(movieId)
+        .then(movie => {
+            res.render('movies/movie', {
+            movie: movie,
+            pageTitle: movie.title,
+            path: 'movies/movies'
+            });
+            console.log(movie);
+        })
+        .catch(error => console.log(error));
     
 };
