@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-//const expressHbs = require('express-handlebars');
+const mongoose = require('mongoose');
 
 const errorController = require('./controllers/error');
 const mongoConnect = require('./util/database').mongoConnect;
@@ -37,6 +37,13 @@ app.use(moviesRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect(() => {    
-    app.listen(3000);
-});
+mongoose
+.connect(
+    'mongodb+srv://ratrateroo:UltraPassword@moviecollector-icuyt.mongodb.net/movie?retryWrites=true&w=majority'
+    )
+    .then(result => {
+        app.listen(3000);
+    })
+    .catch(error => {
+        console.log(error);
+    });
