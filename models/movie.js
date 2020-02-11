@@ -39,8 +39,16 @@ module.exports = class Movie {
         });      
     }
 
-    static fetchAll(cb) {
-        getMoviesFromFile(cb);
+    static fetchAll() {
+        const db = getDb();
+        return db.collection('movies').find().toArray()
+        .then(movies => {
+            console.log(movies);
+            return movies
+        })
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     static findById(id, cb) {

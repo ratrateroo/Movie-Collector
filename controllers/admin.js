@@ -19,22 +19,24 @@ exports.postAddMovies = (req, res, next) => {
         console.log('Added Movie');
         res.redirect('my-movies');  
     })
-    .catch(error => {
-        console.log(error);
-    }); 
+    ; 
        
 };
 
 exports.getMyMovies =  (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    Movie.fetchAll(movies => {
+    Movie.fetchAll()
+    .then(movies => {
         res.render('admin/my-movies', { 
             movies: movies, 
             pageTitle: 'My Movies', 
             path: 'admin/my-movies',
             activeMyMovies: true
         });
+    })
+    .catch(error => {
+        console.log(error);
     });
 }
 
