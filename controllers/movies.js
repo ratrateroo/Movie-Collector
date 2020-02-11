@@ -39,3 +39,14 @@ exports.getMovie = (req, res, next) => {
         .catch(error => console.log(error));
     
 };
+
+exports.postFavorite = (req, res, next) => {
+    const movieId = req.body.movieId;
+    Movie.findById(movieId)
+    .then(movie => {
+        return req.user.addToFavorite(movie);
+    })
+    .then(result => {
+        console.log(result);
+    });
+};
