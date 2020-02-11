@@ -40,6 +40,23 @@ exports.getMovie = (req, res, next) => {
     
 };
 
+exports.getFavorite =  (req, res, next) => {
+    // console.log('my-movies.html', adminData.movies);
+    // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
+    Movie.fetchAll()
+    .then(movies => {
+        res.render('movies/favorite', { 
+            movies: movies, 
+            pageTitle: 'My Favorite', 
+            path: '/favorite',
+            activeMyMovies: true
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
+};
+
 exports.postFavorite = (req, res, next) => {
     const movieId = req.body.movieId;
     Movie.findById(movieId)

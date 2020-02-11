@@ -1,0 +1,39 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <header class="main-header">
+        <%- include('../includes/navigation.ejs') %>
+    </header>
+    <main class="main-area">
+        <!-- Main area for the movie list -->
+        <!-- <h1>Main Area</h1> -->
+        <% if (movies.length > 0) { %>
+            <% for (let movie of movies) { %>
+                <div class="movie">
+                    <div class="movie__header">
+                        <div class="movie__title">
+                            <h3><%= movie.title %></h3>
+                        </div>
+                    </div>
+                    <div class="movie__body">
+                        <div class="movie__poster">
+                            <a href="/movies/<%= movie._id %>">
+                                <img src="../<%= movie.imageUrl %>" alt="movie-poster">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="movie__footer">
+                        <div class="movie__release-date">
+                            <h4><%= movie.year %></h4>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <h1>No Movies</h1>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
+
+   
+   
