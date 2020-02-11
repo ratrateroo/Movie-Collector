@@ -1,31 +1,15 @@
 const mongodb = require('mongodb');
 const getDb = require('../util/database').getDb;
 
-//const movies = [];
-const fs = require('fs');
-const path = require('path');
 
-const m = path.join(
-    path.dirname(process.mainModule.filename),
-    'data',
-    'movies.json'
-    );
-
-const getMoviesFromFile = cb => {    
-    fs.readFile(m, (error, fileContent) => {
-        if (error) {
-         cb([]);
-        } else {
-         cb(JSON.parse(fileContent));
-        }
-    });
-};
 
 module.exports = class Movie {
-    constructor(title, year, imageUrl = "badboysforlife.jpg") {
+    constructor(title, year, imageUrl = "badboysforlife.jpg", id, userId) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.year = year;
+        this._id = id ? new mongodb.ObjectId(id): null;
+        this.userId = userId;
     }
 
     save() {
