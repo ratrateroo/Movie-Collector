@@ -46,18 +46,18 @@ const favoriteMovieIndex = this.favorite.items.findIndex(favoriteMovie => {
     const updatedFavoriteItems = [...this.favorite.items];
 
     if (favoriteMovieIndex >= 0) {
-    newQuantity = this.cart.items[favoriteMovieIndex].quantity + 1;
+    newQuantity = this.favorite.items[favoriteMovieIndex].quantity + 1;
     updatedFavoriteItems[favoriteMovieIndex].quantity = newQuantity;
     } else {
         updatedFavoriteItems.push({
-        productId: movie._id,
+        movieId: movie._id,
         quantity: newQuantity
     });
     }
     const updatedFavorite = {
-    items: updatedFavoriteItems
+        items: updatedFavoriteItems
     };
-    this.cart = updatedFavorite;
+    this.favorite = updatedFavorite;
     return this.save();
 
 

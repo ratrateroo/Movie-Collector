@@ -70,7 +70,7 @@ exports.postFavorite = (req, res, next) => {
     const movieId = req.body.movieId;
     Movie.findById(movieId)
     .then(movie => {
-    console.log(movie);
+    console.log('Add to favorite: Done');
     return req.user.addToFavorite(movie);
         
     })

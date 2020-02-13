@@ -38,7 +38,7 @@ exports.getMyMovies = (req, res, next) => {
         // .select('title year -_id')
         // .populate('userId','firstName')
         .then(movies => {
-            console.log('Get My Movies: ' + movies);
+            console.log('Get My Movies: Done');
             res.render('admin/my-movies', {
                 movies: movies,
                 pageTitle: 'My Movies',
