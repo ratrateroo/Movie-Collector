@@ -24,7 +24,9 @@ const userSchema = new Schema({
         required: true
     },
     favorote: {
-        items: [{ movieId: { type: Schema.Types.ObjectId, required: true }}]
+        items: [
+            { 
+                movieId: { type: Schema.Types.ObjectId, ref: 'Movie', required: true }}]
     }
 });
 

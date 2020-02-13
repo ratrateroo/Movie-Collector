@@ -17,7 +17,8 @@ exports.postAddMovies = (req, res, next) => {
     const movie = new Movie({
         title: title,
         year: year,
-        imageUrl: "../badboysforlife.jpg"
+        imageUrl: "../badboysforlife.jpg",
+        userId: req.user
     });
     movie.save()
     .then(result => {
