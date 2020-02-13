@@ -2,6 +2,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .movie-card {
     padding: 1rem;
@@ -39,4 +40,54 @@
     justify-content: space-between;
 }
 
+.movie__control {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--CreamyWhite);
+    box-shadow: 9px 10px 5px -5px rgba(0,0,0,0.75);
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: row;
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+    display:flex;
+}
+
+.movie__control a {
+    color: var(--CreamyWhite);
+    text-decoration: none;
+    font-size: 1rem;
+    display:block;
+    border: 1px solid red;    
+    background-color: var(--VolcanicRock);
+    cursor: pointer;
+    width: calc(100% - 50%);
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0.5rem;
+    
+    
+}
+
+.movie__control form {
+    width: calc(100% - 50%);
+    height: 40px;
+    margin: 0.5rem;
+
+}
+
+.movie__control .button{
+    color: var(--CreamyWhite);
+    font-size: 1rem;
+    display:block;
+    border: none;
+    border: 1px solid red;
+    padding: 0.3rem;
+    background-color: var(--VolcanicRock);
+    cursor: pointer;
+    width: 100%;    
+    height: 100%;
+}
 
