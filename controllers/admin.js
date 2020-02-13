@@ -13,13 +13,20 @@ exports.postAddMovies = (req, res, next) => {
     const title = req.body.title;
     const year = req.body.year;
     const imageUrl = req.body.imageUrl;
-    const movie = new Movie(title, year, imageUrl, null, req.user._id);
+    //const movie = new Movie(title, year, imageUrl, null, req.user._id);
+    const movie = new Movie({
+        title: title,
+        year: year,
+        imageUrl: imageUrl
+    });
     movie.save()
     .then(result => {
         console.log('Added Movie');
         res.redirect('my-movies');  
     })
-    ; 
+    .catch(error => {
+        console.log(error);
+    }); 
        
 };
 
