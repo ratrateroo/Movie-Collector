@@ -47,3 +47,46 @@ exports.getMyMovies = (req, res, next) => {
             console.log(error);
         });
 };
+
+exports.getEditMovie = (req, res, next) => {
+    const editMode = req.query.edit;
+    if (!editMode) {
+      return res.redirect('/');
+    }
+    
+    const movieId = req.params.movieId;
+    Movie.findById(movieId)
+      .then(movie => {
+        if (!movie) {
+          return res.redirect('/');
+        }
+        res.render('admin/edit-movie', {
+          pageTitle: 'Edit Movie',
+          path: '/admin/edit-movie',
+          editing: editMode,
+          movie: movie
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  exports.postEditMovie = (req, res, next) => {
+    const movieId = req.body.movieId;
+    const updatedTitle = req.body.title;
+    const updatedYear = req.body.year;
+    const updatedImageUrl = req.body.imageUrl;
+   
+  
+    Product.findById(movieId)
+      .then(movie => {
+        movie.title = updatedTitle;
+        movie.year = updatedYear;
+        movie.imageUrl = updatedImageUrl;
+        return movie.save();
+      })
+      .then(result => {
+        console.log('Updated Movie: ' + result);
+        res.redirect('/admin/my-movies');
+      })
+      .catch(err => console.log(err));
+  };

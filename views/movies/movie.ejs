@@ -23,6 +23,13 @@
                 <div class="movie__release-date">
                     <h4><%= movie.year %></h4>
                 </div>
+            </div>
+            <div class="movie__control">
+                <a href="/admin/edit-movie/<%= movie._id %>?edit=true" class="btn">Edit</a>
+                <form action="/admin/delete-movie" method="POST">
+                    <input type="hidden" value="<%= movie._id %>" name="productId">
+                    <button class="btn" type="submit">Delete</button>
+                </form>
             </div>            
         </div>
         

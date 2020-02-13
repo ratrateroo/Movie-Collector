@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <header class="main-header">
+        <%- include('../includes/navigation.ejs') %>
+    </header>
+    <main class="main-area">
+        <div class="signup-page">
+            <form action="/admin/<% if (editing) { %>edit-movie<% } else { %>add-movie<% } %>" class="signup-form" method="POST">
+                
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" value="<% if (editing) { %><%= movie.title %><% } %>">
+
+                <label for="year">Year</label>
+                <input type="text" id="year" name="year" step="1" value="<% if (editing) { %><%= movie.year %><% } %>">
+
+                <label for="imageUrl">Image URL</label>
+                <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= movie.imageUrl %><% } %>">
+
+                <% if (editing) { %>
+                    <input type="hidden" value="<%= movie._id %>" name="movieId">
+                <% } %>
+
+                <button type="submit" class="button"><% if (editing) { %>Update Movie<% } else { %>Add Movie<% } %></button>
+            </form>
+        </div>
+    </main>
+<%- include('../includes/end.ejs') %>

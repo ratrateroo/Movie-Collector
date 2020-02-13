@@ -15,6 +15,8 @@ router.get('/add-movies', adminController.getAddMovies);
 router.post('/add-movies', adminController.postAddMovies);
 
 router.get('/my-movies', adminController.getMyMovies);
+router.get('/edit-movie/:movieId', adminController.getEditMovie);
+router.post('/edit-movie', adminController.postEditMovie);
 module.exports = router;
 // exports.routes = router;
 // exports.movies = movies;
