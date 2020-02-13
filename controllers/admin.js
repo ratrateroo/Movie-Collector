@@ -77,7 +77,7 @@ exports.getEditMovie = (req, res, next) => {
     const updatedImageUrl = req.body.imageUrl;
    
   
-    Product.findById(movieId)
+    Movie.findById(movieId)
       .then(movie => {
         movie.title = updatedTitle;
         movie.year = updatedYear;
@@ -86,6 +86,16 @@ exports.getEditMovie = (req, res, next) => {
       })
       .then(result => {
         console.log('Updated Movie: ' + result);
+        res.redirect('/admin/my-movies');
+      })
+      .catch(err => console.log(err));
+  };
+
+  exports.postDeleteMovie = (req, res, next) => {
+    const movieId = req.body.movieId;
+    Movie.findByIdAndRemove(movieId)
+      .then(() => {
+        console.log('Deleted Movie');
         res.redirect('/admin/my-movies');
       })
       .catch(err => console.log(err));
