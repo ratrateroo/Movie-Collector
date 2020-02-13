@@ -54,9 +54,15 @@ exports.postFavorite = (req, res, next) => {
     const movieId = req.body.movieId;
     Movie.findById(movieId)
     .then(movie => {
-        return req.user.addToFavorite(movie);
+    console.log(movie);
+    return req.user.addToFavorite(movie);
+        
     })
     .then(result => {
         console.log(result);
-    });
+        res.redirect('/favorite');
+      })
+    .catch(err => {
+        console.log(err);
+      });
 };
