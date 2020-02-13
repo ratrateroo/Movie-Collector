@@ -8,7 +8,7 @@ const Movie = require('../models/movie');
 
 exports.getMovies = (req, res, next) => {
     
-    Movie.fetchAll(movies => {
+    Movie.find(movies => {
         res.render('movies/movies', { 
             movies: movies,
             pageTitle: 'Movies', 

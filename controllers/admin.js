@@ -35,6 +35,8 @@ exports.getMyMovies = (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
     Movie.find()
+        // .select('title year -_id')
+        // .populate('userId','firstName')
         .then(movies => {
             console.log('Get My Movies: ' + movies);
             res.render('admin/my-movies', {
