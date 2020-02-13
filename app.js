@@ -24,10 +24,10 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    User.findById("5e453df58ee90b1498cb5716")
+    User.findById("5e454a32c7d09411e8db168a")
         .then(user => {
             req.user = user;
-            console.log(user);
+            console.log("User ID: " + user._id);
             next();
         })
         .catch(error => console.log(error));

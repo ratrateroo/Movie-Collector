@@ -36,7 +36,7 @@ exports.getMovie = (req, res, next) => {
 exports.getFavorite =  (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    Movie.fetchAll()
+    Movie.find()
     .then(movies => {
         res.render('movies/favorite', { 
             movies: movies, 
@@ -49,6 +49,22 @@ exports.getFavorite =  (req, res, next) => {
         console.log(error);
     });
 };
+
+exports.getFavorite = (req, res, next) => {
+    req.user
+    .populate('favorite.items.movieId')
+    .execPopulate()
+    .then(user => {
+      const movies = user.favorite.items;
+      console.log('Favorite Movies: ' + movies);
+        res.render('movies/favorite', {
+          path: '/favorite',
+          pageTitle: 'Favorite Movies',
+          movies: movies
+        });
+      })
+      .catch(err => console.log(err));
+  };
 
 exports.postFavorite = (req, res, next) => {
     const movieId = req.body.movieId;
@@ -63,6 +79,7 @@ exports.postFavorite = (req, res, next) => {
         res.redirect('/favorite');
       })
     .catch(err => {
-        console.log(err);
+        console.log('add to favorite error: '+ err);
+        
       });
 };
