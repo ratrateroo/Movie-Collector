@@ -30,19 +30,19 @@ exports.postAddMovies = (req, res, next) => {
        
 };
 
-exports.getMyMovies =  (req, res, next) => {
+exports.getMyMovies = (req, res, next) => {
     // console.log('my-movies.html', adminData.movies);
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    Movie.fetchAll()
-    .then(movies => {
-        res.render('admin/my-movies', { 
-            movies: movies, 
-            pageTitle: 'My Movies', 
-            path: 'admin/my-movies',
-            activeMyMovies: true
+    Movie.find()
+        .then(movies => {
+            res.render('admin/my-movies', {
+                movies: movies,
+                pageTitle: 'My Movies',
+                path: 'admin/my-movies',
+                activeMyMovies: true
+            });
+        })
+        .catch(error => {
+            console.log(error);
         });
-    })
-    .catch(error => {
-        console.log(error);
-    });
 };
