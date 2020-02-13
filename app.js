@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const errorController = require('./controllers/error');
 //const mongoConnect = require('./util/database').mongoConnect;
-//const User = require('./models/user');
+const User = require('./models/user');
 const app = express();
 
 //app.engine('handlebars', expressHbs());
@@ -23,14 +23,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use((req, res, next) => {
-//     User.findById("5e42be80ddaf131b80bce155")
-//         .then(user => {
-//             req.user = new User(user.name, user.email, user.favorite, user._id);
-//             next();
-//         })
-//         .catch(error => console.log(error));
-// })
+app.use((req, res, next) => {
+    User.findById("5e453df58ee90b1498cb5716")
+        .then(user => {
+            req.user = user;
+            next();
+        })
+        .catch(error => console.log(error));
+})
 
 app.use('/admin', adminRoutes);
 app.use(moviesRoutes);
@@ -38,12 +38,28 @@ app.use(moviesRoutes);
 app.use(errorController.get404);
 
 mongoose
-.connect(
-    'mongodb+srv://ratrateroo:UltraPassword@moviecollector-icuyt.mongodb.net/movie?retryWrites=true&w=majority'
+    .connect(
+        'mongodb+srv://ratrateroo:UltraPassword@moviecollector-icuyt.mongodb.net/movie?retryWrites=true&w=majority'
     )
     .then(result => {
+        User.findOne().then(user => {
+            if (!user) {
+                const user = new User({
+                    title: 'Mr',
+                    firstName: 'Mark',
+                    lastName: 'Tarectecan',
+                    email: 'email@email.com',
+                    password: 'ultrapassword',
+                    favorite: {
+                        items: []
+                    }
+                });
+                user.save();
+            }
+        });
         app.listen(3000);
     })
+
     .catch(error => {
         console.log('Mongoose Error: ' + error);
     });
