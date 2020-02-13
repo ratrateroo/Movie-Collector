@@ -35,6 +35,7 @@ exports.getMyMovies = (req, res, next) => {
     // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
     Movie.find()
         .then(movies => {
+            console.log('Get My Movies: ' + movies);
             res.render('admin/my-movies', {
                 movies: movies,
                 pageTitle: 'My Movies',
