@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
@@ -7,7 +8,7 @@ const movieSchema = new Schema({
         required: true
     },
     year: {
-        title: Number,
+        type: Number,
         required: true
     },
     imageUrl: {

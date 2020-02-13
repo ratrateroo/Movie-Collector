@@ -17,15 +17,15 @@ exports.postAddMovies = (req, res, next) => {
     const movie = new Movie({
         title: title,
         year: year,
-        imageUrl: imageUrl
+        imageUrl: "../badboysforlife.jpg"
     });
     movie.save()
     .then(result => {
-        console.log('Added Movie');
+        console.log('Post Added Movie:' + result);
         res.redirect('my-movies');  
     })
     .catch(error => {
-        console.log(error);
+        console.log('Post Add Movie Error: ' + error);
     }); 
        
 };
