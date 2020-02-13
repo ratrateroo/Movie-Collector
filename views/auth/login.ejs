@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <header class="main-header">
+        <%- include('../includes/navigation.ejs') %>
+    </header>
+    <main class="main-area">
+        <!-- Main area for the movie list -->
+        <!-- <h1>Main Area</h1> -->
+        <div class="signup-page">
+            <form action="index.html" class="signup-form">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <button type="submit" class="button">Log In</button>
+            </form>
+        </div>
+    </main>
+<%- include('../includes/end.ejs') %>
+
+   
+   
