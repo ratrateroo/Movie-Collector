@@ -96,7 +96,38 @@ body {
     color: var(--CreamyWhite);
 }
 
+.main-header__item form {
+    display:flex;
+    height: 4.5rem;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-header__item button {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    color: var(--CreamyWhite);
+    cursor: pointer;
+    font: inherit;
+    background: transparent;
+    border: none;
+    width: 100%;
+    min-height: auto;
+    line-height: normal;
+    
+
+}
+
 .main-header__item a:hover {
+    color: var(--VolcanicRock);
+    background-color: var(--CreamyWhite);
+    border-bottom: 5px solid var(--VolcanicRock);
+}
+
+
+.main-header__item button:hover {
     color: var(--VolcanicRock);
     background-color: var(--CreamyWhite);
     border-bottom: 5px solid var(--VolcanicRock);
