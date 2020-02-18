@@ -6,7 +6,8 @@ exports.getAddMovies = (req, res, next) => {
       pageTitle: 'Add Movies', 
       path: '/admin/add-movies',
       activeAddMovies: true,
-      formsCSS:true });
+      formsCSS:true,
+      isAuthenticated: req.isLoggedIn });
 };
 
 exports.postAddMovies = (req, res, next) => {
@@ -43,7 +44,8 @@ exports.getMyMovies = (req, res, next) => {
                 movies: movies,
                 pageTitle: 'My Movies',
                 path: 'admin/my-movies',
-                activeMyMovies: true
+                activeMyMovies: true,
+                isAuthenticated: req.isLoggedIn
             });
         })
         .catch(error => {
@@ -67,7 +69,8 @@ exports.getEditMovie = (req, res, next) => {
           pageTitle: 'Edit Movie',
           path: '/admin/edit-movie',
           editing: editMode,
-          movie: movie
+          movie: movie,
+          isAuthenticated: req.isLoggedIn
         });
       })
       .catch(err => console.log(err));
