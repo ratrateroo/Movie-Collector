@@ -7,14 +7,19 @@ const Movie = require('../models/movie');
 // }
 
 exports.getMovies = (req, res, next) => {
-    
+    console.log(req.get('Cookie'));
+    const isLoggedIn = req
+    .get('Cookie')
+    .split(';')[0]
+    .trim()
+    .split('=')[1];
     Movie.find(movies => {
         res.render('movies/movies', { 
             movies: movies,
             pageTitle: 'Movies', 
             path: 'movies/movies',
             activeMovies: true,
-            isAuthenticated: req.isLoggedIn
+            isAuthenticated: isLoggedIn
         });
     });
     

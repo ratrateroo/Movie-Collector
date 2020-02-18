@@ -6,17 +6,18 @@
         <li class="main-header__item">
             <a class="<%= path === '/'? 'active': ''%>" href="/">Movies</a>
         </li>
-        
+        <% if (isAuthenticated) { %>
         <li class="main-header__item">
             <a class="<%= path === '/admin/my-movies'? 'active': ''%>" href="/admin/my-movies">My Collection</a>
         </li>
-
+        
         <li class="main-header__item">
             <a class="<%= path === '/admin/add-movies'? 'active': ''%>" href="/admin/add-movies">Add Movies</a>
         </li>
         <li class="main-header__item">
             <a class="<%= path === 'movies/favorite'? 'active': ''%>" href="/favorite">My Favorites</a>
-        </li> 
+        </li>
+        <% } %>
 
         
     </ul>
