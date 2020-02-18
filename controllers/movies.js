@@ -13,7 +13,8 @@ exports.getMovies = (req, res, next) => {
             movies: movies,
             pageTitle: 'Movies', 
             path: 'movies/movies',
-            activeMovies: true
+            activeMovies: true,
+            isAuthenticated: req.isLoggedIn
         });
     });
     
@@ -27,7 +28,8 @@ exports.getMovie = (req, res, next) => {
             res.render('movies/movie', {
                 movie: movie,
                 pageTitle: movie.title,
-                path: 'movies/movies'
+                path: 'movies/movies',
+                isAuthenticated: req.isLoggedIn
             });
         })
         .catch(error => console.log(error));
@@ -42,7 +44,8 @@ exports.getFavorite =  (req, res, next) => {
             movies: movies, 
             pageTitle: 'My Favorite', 
             path: 'movies/favorite',
-            activeMyMovies: true
+            activeMyMovies: true,
+            isAuthenticated: req.isLoggedIn
         });
     })
     .catch(error => {
@@ -60,7 +63,8 @@ exports.getFavorite = (req, res, next) => {
         res.render('movies/favorite', {
           path: '/favorite',
           pageTitle: 'Favorite Movies',
-          movies: movies
+          movies: movies,
+          isAuthenticated: req.isLoggedIn
         });
       })
       .catch(err => console.log(err));
