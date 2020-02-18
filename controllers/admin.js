@@ -7,7 +7,7 @@ exports.getAddMovies = (req, res, next) => {
       path: '/admin/add-movies',
       activeAddMovies: true,
       formsCSS:true,
-      isAuthenticated: req.isLoggedIn });
+      isAuthenticated: req.session.isLoggedIn });
 };
 
 exports.postAddMovies = (req, res, next) => {
@@ -45,7 +45,7 @@ exports.getMyMovies = (req, res, next) => {
                 pageTitle: 'My Movies',
                 path: 'admin/my-movies',
                 activeMyMovies: true,
-                isAuthenticated: req.isLoggedIn
+                isAuthenticated: req.session.isLoggedIn
             });
         })
         .catch(error => {

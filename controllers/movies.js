@@ -34,7 +34,7 @@ exports.getMovie = (req, res, next) => {
                 movie: movie,
                 pageTitle: movie.title,
                 path: 'movies/movies',
-                isAuthenticated: req.isLoggedIn
+                isAuthenticated: req.session.isLoggedIn
             });
         })
         .catch(error => console.log(error));
@@ -50,7 +50,7 @@ exports.getFavorite =  (req, res, next) => {
             pageTitle: 'My Favorite', 
             path: 'movies/favorite',
             activeMyMovies: true,
-            isAuthenticated: req.isLoggedIn
+            isAuthenticated: req.session.isLoggedIn
         });
     })
     .catch(error => {
@@ -69,7 +69,7 @@ exports.getFavorite = (req, res, next) => {
           path: '/favorite',
           pageTitle: 'Favorite Movies',
           movies: movies,
-          isAuthenticated: req.isLoggedIn
+          isAuthenticated: req.session.isLoggedIn
         });
       })
       .catch(err => console.log(err));
