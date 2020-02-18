@@ -70,7 +70,7 @@ exports.getEditMovie = (req, res, next) => {
           path: '/admin/edit-movie',
           editing: editMode,
           movie: movie,
-          isAuthenticated: req.isLoggedIn
+          isAuthenticated: req.session.isLoggedIn
         });
       })
       .catch(err => console.log(err));
