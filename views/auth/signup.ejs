@@ -33,7 +33,8 @@
                 <label for="confirm-password">Confirm Password</label>
                 <input type="password" id="confirm-password"  placeholder="Confirm Password" name="confirmPassword" required>
                 
-                
+                <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+
                 <button type="submit" class="button">Sign Up</button>
             </form>
         </div>

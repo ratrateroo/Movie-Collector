@@ -11,8 +11,7 @@ exports.getLogin = (req, res, next) => {
     res.render('auth/login', {
         path: '/login',
         pageTitle: 'Login',
-        isAuthenticated: false,
-        csrfToken: req.csrfToken()
+        errorMessage: req.flash('error')
     });
       
 };
@@ -23,9 +22,9 @@ exports.postLogin = (req, res, next) => {
    
     User.findOne({ email: email })
         .then(user => {
-            console.log("email" + user.email);
-            console.log("password" + user.password);
+        
             if (!user) {
+                req.flash('error', 'Invalid email or password.');
                 console.log("No user");
                 return res.redirect('/login');
             }

@@ -40,9 +40,8 @@ exports.getMovies = (req, res, next) => {
                     posterSize: POSTER_SIZE,
                     pageTitle: 'Movies', 
                     path: 'movies/movies',
-                    activeMovies: true,
-                    isAuthenticated: req.session.isLoggedIn,
-                    csrfToken: req.csrfToken()
+                    activeMovies: true
+                    
                 });
             })
             .catch(error => console.log(error));

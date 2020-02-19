@@ -21,7 +21,8 @@
                 <% if (editing) { %>
                     <input type="hidden" value="<%= movie._id %>" name="movieId">
                 <% } %>
-
+                <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+   
                 <button type="submit" class="button"><% if (editing) { %>Update Movie<% } else { %>Add Movie<% } %></button>
             </form>
         </div>

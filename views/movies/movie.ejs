@@ -38,6 +38,8 @@
             </form>
             <form action="/admin/add-to-collection/<%= movie.id %>" method="POST">
                 <input type="hidden" value="<%= movie.id %>" name="movieId">
+                <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+
                 <button class="button" type="submit">Add to Collection</button>
             </form>
         </div> 
