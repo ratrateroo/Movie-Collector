@@ -194,3 +194,15 @@ exports.getEditMovie = (req, res, next) => {
       })
       .catch(err => console.log(err));
   };
+
+  exports.getSignup = (req, res, next) => {
+    res.render('auth/signup', {
+      path: '/signup',
+      pageTitle: 'Signup',
+      isAuthenticated: false
+    });
+  }
+
+  exports.postSignup = (req, res, next) => {
+
+  }
