@@ -29,9 +29,15 @@ exports.getMovies = (req, res, next) => {
             .then(movies => movies.json())
             .then(movies => movies.results)
             .then(movies => {
-                console.log(movies);
+                console.log(movies[0]);
+                console.log(IMAGE_BASE_URL);
+                console.log(IMAGE_SIZE);
+                console.log(POSTER_SIZE);
                 res.render('movies/movies', { 
                     movies: movies,
+                    imageBaseUrl: IMAGE_BASE_URL,
+                    imageSize: IMAGE_SIZE,
+                    posterSize: POSTER_SIZE,
                     pageTitle: 'Movies', 
                     path: 'movies/movies',
                     activeMovies: true,
