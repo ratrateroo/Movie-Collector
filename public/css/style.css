@@ -187,7 +187,14 @@ body {
 }
 
 .movie__footer {
+    margin-top: 0.5rem;
     color: var(--MachaGreen);
+    display: flex;
+    justify-content: space-between;
+}
+.movie__favorite img {
+    display:block;
+    height: 1rem;
 }
 /*Footer Styling*/
 .main-footer {
