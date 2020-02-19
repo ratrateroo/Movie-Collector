@@ -41,7 +41,8 @@ exports.getMovies = (req, res, next) => {
                     pageTitle: 'Movies', 
                     path: 'movies/movies',
                     activeMovies: true,
-                    isAuthenticated: req.session.isLoggedIn
+                    isAuthenticated: req.session.isLoggedIn,
+                    csrfToken: req.csrfToken()
                 });
             })
             .catch(error => console.log(error));

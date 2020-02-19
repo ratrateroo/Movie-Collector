@@ -13,7 +13,7 @@ router.get('/add-movies',  adminController.getAddMovies);
 router.post('/add-movies', adminController.postAddMovies);
 router.post('/add-to-collection/:movieId', isAuth, adminController.postAddToCollection);
 
-router.get('/my-movies', adminController.getMyMovies);
+router.get('/my-movies', isAuth, adminController.getMyMovies);
 router.get('/edit-movie/:movieId', isAuth, adminController.getEditMovie);
 router.post('/edit-movie', adminController.postEditMovie);
 router.post('/delete-movie', adminController.postDeleteMovie);
