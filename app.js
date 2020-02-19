@@ -41,15 +41,19 @@ app.use(session({
     store: store
 }));
 
-// app.use((req, res, next) => {
-//     User.findById("5e456631864dce0f38140117")
-//         .then(user => {
-//             req.user = user;
-//             console.log("User ID: " + user._id);
-//             next();
-//         })
-//         .catch(error => console.log(error));
-// });
+app.use((req, res, next) => {
+    if (!req.session.user) {
+        return next();
+      }
+    User.findById(req.session.user._id)
+        .then(user => {
+            req.user = user;
+            console.log("User ID: " + user._id);
+            console.log("User ID: " + user.firstName);
+            next();
+        })
+        .catch(error => console.log(error));
+});
 
 app.use('/admin', adminRoutes);
 app.use(moviesRoutes);
