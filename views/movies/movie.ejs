@@ -5,14 +5,15 @@
     <header class="main-header">
         <%- include('../includes/navigation.ejs') %>
     </header>
-    <main class="main-area">
+    <main class="main-area" style="background: url('<%= imageBaseUrl + posterSize + movie.poster_path %>') repeat center fixed; background-size: auto auto;">
         <!-- Main area for the movie list -->
         <!-- <h1>Main Area</h1> -->
         <div class="movie-card">
             <div class="movie__image">
                 <div class="movie__poster">
                     
-                        <img src="../<%= movie.imageUrl %>" alt="<%= movie._id %>">
+                        
+                        <img src="<%= imageBaseUrl + posterSize + movie.poster_path %>" alt="movie-poster">
                     
                 </div>                
             </div>
@@ -20,16 +21,19 @@
                 <div class="movie__title">
                     <h3><%= movie.title %></h3>
                 </div>
+                <div class="movie__overview">
+                    <h3><%= movie.overview %></h3>
+                </div>
                 <div class="movie__release-date">
-                    <h4><%= movie.year %></h4>
+                    <h4><%= movie.release_date %></h4>
                 </div>
             </div>                       
         </div>
 
         <div class="movie__control">
-            <a href="/admin/edit-movie/<%= movie._id %>?edit=true" class="btn">Edit</a>
+            <a href="/admin/edit-movie/<%= movie.id %>?edit=true" class="btn">Edit</a>
             <form action="/admin/delete-movie" method="POST">
-                <input type="hidden" value="<%= movie._id %>" name="movieId">
+                <input type="hidden" value="<%= movie.id %>" name="movieId">
                 <button class="button" type="submit">Delete</button>
             </form>
         </div> 

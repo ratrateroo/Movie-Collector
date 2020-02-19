@@ -21,7 +21,7 @@ const fetchMovies = (endpoint) => {
         )
 }
 
-const mymovies = {};
+
 
 exports.getMovies = (req, res, next) => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
@@ -49,40 +49,45 @@ exports.getMovies = (req, res, next) => {
 
 
 
-//     Movie.find(movies => {
-//         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-//         console.log(endpoint);   
-//         fetch(endpoint)
-//             .then(movies => movies.json())
-//             .then(movies => {
-                
-//                 console.log(movies.results);
-//             })
-//    .catch(error => console.error('Error:', error));
-//         res.render('movies/movies', { 
-//             movies: movies,
-//             pageTitle: 'Movies', 
-//             path: 'movies/movies',
-//             activeMovies: true,
-//             isAuthenticated: req.session.isLoggedIn
-//         });
-//     });
+
     
 };
 
 exports.getMovie = (req, res, next) => {
     const movieId = req.params.movieId;
-    Movie.findById(movieId)
-        .then(movie => {
-            console.log('Get Movie: ' + movie);
-            res.render('movies/movie', {
-                movie: movie,
-                pageTitle: movie.title,
-                path: 'movies/movies',
-                isAuthenticated: req.session.isLoggedIn
-            });
-        })
-        .catch(error => console.log(error));
+    const endpoint =`${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+    fetch(endpoint)
+            .then(movie => movie.json())
+             
+            .then(movie => {
+                console.log(movie);
+                console.log(IMAGE_BASE_URL);
+                console.log(IMAGE_SIZE);
+                console.log(POSTER_SIZE);
+                res.render('movies/movie', { 
+                    movie: movie,
+                    pageTitle: movie.title,
+                    imageBaseUrl: IMAGE_BASE_URL,
+                    imageSize: IMAGE_SIZE,
+                    posterSize: POSTER_SIZE,    
+                    path: 'movies/movies',
+                    activeMovies: true,
+                    isAuthenticated: req.session.isLoggedIn
+                });
+            })
+            .catch(error => console.log(error));
+
+    // Movie.findById(movieId)
+    //     .then(movie => {
+    //         console.log('Get Movie: ' + movie);
+    //         res.render('movies/movie', {
+    //             movie: movie,
+    //             pageTitle: movie.title,
+    //             path: 'movies/movies',
+    //             isAuthenticated: req.session.isLoggedIn
+    //         });
+    //     })
+    //     .catch(error => console.log(error));
 };
 
 exports.getFavorite =  (req, res, next) => {
