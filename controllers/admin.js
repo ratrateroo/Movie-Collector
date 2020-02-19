@@ -27,7 +27,7 @@ exports.postAddMovies = (req, res, next) => {
     movie.save()
     .then(result => {
         console.log('Post Added Movie:' + result);
-        res.redirect('my-movies');  
+        res.redirect('../../my-movies');  
     })
     .catch(error => {
         console.log('Post Add Movie Error: ' + error);
@@ -55,8 +55,24 @@ exports.postAddToCollection = (req, res, next) => {
             return movie.save();
             })
             .then(result => {
-              console.log('Post Added Movie:' + result);
-              res.redirect('my-movies');  
+              Movie.find()
+              // .select('title year -_id')
+              // .populate('userId','firstName')
+              .then(movies => {
+                  console.log('Get My Movies: Done');
+                  res.render('admin/my-movies', {
+                      movies: movies,
+                      imageBaseUrl: IMAGE_BASE_URL,
+                      imageSize: IMAGE_SIZE,
+                      posterSize: POSTER_SIZE,
+                      pageTitle: 'My Movies',
+                      path: 'admin/my-movies',
+                      activeMyMovies: true,
+                      isAuthenticated: req.session.isLoggedIn
+                  })
+              })
+              
+                     
           })
           .catch(error => {
               console.log('Post Add Movie Error: ' + error);
