@@ -1,5 +1,7 @@
+const fetch = require('node-fetch');
 const Movie = require('../models/movie');
 const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('../config/configfile');
+
 
 
 
@@ -20,23 +22,26 @@ const fetchMovies = (endpoint) => {
 }
 
 exports.getMovies = (req, res, next) => {
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-   fetch(endpoint)
-   .then(result => result.json())
-   .then(result => {
-       console.log(result);
-   })
-   .catch(error => console.error('Error:', error));
+    
 
-    // Movie.find(movies => {
-    //     res.render('movies/movies', { 
-    //         movies: movies,
-    //         pageTitle: 'Movies', 
-    //         path: 'movies/movies',
-    //         activeMovies: true,
-    //         isAuthenticated: req.session.isLoggedIn
-    //     });
-    // });
+    Movie.find(movies => {
+        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        console.log(endpoint);   
+        fetch(endpoint)
+            .then(movies => movies.json())
+            .then(movies => {
+                
+                console.log(movies.results[0]);
+            })
+   .catch(error => console.error('Error:', error));
+        res.render('movies/movies', { 
+            movies: movies,
+            pageTitle: 'Movies', 
+            path: 'movies/movies',
+            activeMovies: true,
+            isAuthenticated: req.session.isLoggedIn
+        });
+    });
     
 };
 
