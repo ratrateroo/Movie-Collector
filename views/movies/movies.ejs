@@ -139,13 +139,22 @@
                         <div class="movie__release-date">
                             <h4><%= movie.release_date %></h4>
                         </div>
-                        <div class="movie__favorite">
-                            <form action="/favorite" method="post">
-                                <button class="btn" type="submit"><img src="white_heart.svg" alt="movie-favorite-icon"></button>
-                                <input type="hidden" name="movieId" value="<%= movie.id %>">
-                            </form>
+                        <div class="movie__buttons">
+                            <div class="movie__favorite">
+                                <form action="/favorite" method="post">
+                                    <button class="btn" type="submit"><img class="white" src="white_heart.svg" alt="movie-favorite-icon"></button>
+                                    <input type="hidden" name="movieId" value="<%= movie.id %>">
+                                </form>
+                                
+                            </div>
+                            <div class="movie__favorite">
+                                
+                                <form action="/favorite" method="post">
+                                    <button class="btn" type="submit"><img class="red" src="red_heart.svg" alt="movie-favorite-icon"></button>
+                                    <input type="hidden" name="movieId" value="<%= movie.id %>">
+                                </form>
+                            </div>
                         </div>
-                        
 
                     </div>
                     

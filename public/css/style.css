@@ -191,6 +191,10 @@ body {
     color: var(--MachaGreen);
     display: flex;
     justify-content: space-between;
+    height: 2rem;
+}
+.movie__buttons {
+    display: flex;
 }
 .movie__favorite img {
     display:block;
@@ -204,8 +208,17 @@ body {
     background-color: blue;
     height: 1rem;
     width: 1rem;
+    
+}
+.movie__favorite button img.white{
+    height: 1rem;
+    width: 1rem;
 }
 
+.movie__favorite button img.red{
+    height: 1rem;
+    width: 1rem;
+}
 /*Footer Styling*/
 .main-footer {
     grid-area: main-footer;
