@@ -1,27 +1,42 @@
 const Movie = require('../models/movie');
+const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('../config/configfile');
 
-// exports.getMovie = (req, res, next) => {
-//     const movieId = req.params.movieId;
-//     console.log(movieId);
-//     res.redirect('/');
-// }
+
+
+const fetchMovies = (endpoint) => {
+
+    fetch(endpoint)
+        .then(result => result.json())
+        .then(result => {
+            // console.log(result)
+            // console.log('Movies',...Movies)
+            // console.log('result',...result.results)
+            setMovies([...Movies, ...result.results])
+            setMainMovieImage(MainMovieImage || result.results[0])
+            setCurrentPage(result.page)
+        }, setLoading(false))
+        .catch(error => console.error('Error:', error)
+        )
+}
 
 exports.getMovies = (req, res, next) => {
-    // console.log(req.get('Cookie'));
-    // const isLoggedIn = req
-    // .get('Cookie')
-    // .split(';')[0]
-    // .trim()
-    // .split('=')[1];
-    Movie.find(movies => {
-        res.render('movies/movies', { 
-            movies: movies,
-            pageTitle: 'Movies', 
-            path: 'movies/movies',
-            activeMovies: true,
-            isAuthenticated: req.session.isLoggedIn
-        });
-    });
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+   fetch(endpoint)
+   .then(result => result.json())
+   .then(result => {
+       console.log(result);
+   })
+   .catch(error => console.error('Error:', error));
+
+    // Movie.find(movies => {
+    //     res.render('movies/movies', { 
+    //         movies: movies,
+    //         pageTitle: 'Movies', 
+    //         path: 'movies/movies',
+    //         activeMovies: true,
+    //         isAuthenticated: req.session.isLoggedIn
+    //     });
+    // });
     
 };
 
