@@ -4,7 +4,9 @@ const Movie = require('../models/movie');
 const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('../config/configfile');
 
 exports.getAddMovies = (req, res, next) => {
-    //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
+    if (!req.session.isLoggedIn) {
+      return res.redirect('/login');
+    }
     res.render('admin/add-movies', { 
       pageTitle: 'Add Movies', 
       path: '/admin/add-movies',

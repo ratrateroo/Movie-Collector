@@ -1,22 +1,20 @@
-const path = require('path');
-
 const express = require('express');
 
 const adminController = require('../controllers/admin');
 
-const moviesController = require('../controllers/movies');
+const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
 
 //const movies = [];
 
-router.get('/add-movies', adminController.getAddMovies);
+router.get('/add-movies',  adminController.getAddMovies);
   
 router.post('/add-movies', adminController.postAddMovies);
-router.post('/add-to-collection/:movieId', adminController.postAddToCollection);
+router.post('/add-to-collection/:movieId', isAuth, adminController.postAddToCollection);
 
 router.get('/my-movies', adminController.getMyMovies);
-router.get('/edit-movie/:movieId', adminController.getEditMovie);
+router.get('/edit-movie/:movieId', isAuth, adminController.getEditMovie);
 router.post('/edit-movie', adminController.postEditMovie);
 router.post('/delete-movie', adminController.postDeleteMovie);
 module.exports = router;

@@ -4,7 +4,7 @@ const express = require('express');
 
 const moviesController = require('../controllers/movies');
 
-const adminData = require('./admin');
+const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
 
