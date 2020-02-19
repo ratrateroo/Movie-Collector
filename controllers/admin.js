@@ -48,7 +48,7 @@ exports.postAddToCollection = (req, res, next) => {
               const movie = new Movie({
                 title: result.title,
                 year: result.release_date,
-                imageUrl: result.poster_path,
+                imageUrl: IMAGE_BASE_URL + IMAGE_SIZE + result.poster_path,
                 userId: req.user
                 
             });
