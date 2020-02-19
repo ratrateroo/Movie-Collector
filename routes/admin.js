@@ -13,6 +13,7 @@ const router = express.Router();
 router.get('/add-movies', adminController.getAddMovies);
   
 router.post('/add-movies', adminController.postAddMovies);
+router.post('/add-to-collection/:movieId', adminController.postAddToCollection);
 
 router.get('/my-movies', adminController.getMyMovies);
 router.get('/edit-movie/:movieId', adminController.getEditMovie);

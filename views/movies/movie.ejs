@@ -36,6 +36,10 @@
                 <input type="hidden" value="<%= movie.id %>" name="movieId">
                 <button class="button" type="submit">Delete</button>
             </form>
+            <form action="/admin/add-to-collection/<%= movie.id %>" method="POST">
+                <input type="hidden" value="<%= movie.id %>" name="movieId">
+                <button class="button" type="submit">Add to Collection</button>
+            </form>
         </div> 
         
         

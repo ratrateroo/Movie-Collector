@@ -1,4 +1,7 @@
+const fetch = require('node-fetch');
+
 const Movie = require('../models/movie');
+const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('../config/configfile');
 
 exports.getAddMovies = (req, res, next) => {
     //res.sendFile(path.join(rootDir, 'views', 'add-movies.html'));
@@ -30,6 +33,77 @@ exports.postAddMovies = (req, res, next) => {
         console.log('Post Add Movie Error: ' + error);
     }); 
        
+};
+
+exports.postAddToCollection = (req, res, next) => {
+
+  const movieId = req.params.movieId;
+  
+  const endpoint =`${API_URL}movie/${movieId}?api_key=${API_KEY}`;
+
+  fetch(endpoint)
+            .then(movie => movie.json())
+            .then(result => {
+              const movie = new Movie({
+                title: result.title,
+                year: result.release_date,
+                imageUrl: result.poster_path,
+                userId: req.user
+                
+            });
+            return movie.save();
+            })
+            .then(result => {
+              console.log('Post Added Movie:' + result);
+              res.redirect('my-movies');  
+          })
+          .catch(error => {
+              console.log('Post Add Movie Error: ' + error);
+          }); 
+
+
+  const title = req.body.title;
+  const year = req.body.year;
+  const imageUrl = req.body.imageUrl;
+  //const movie = new Movie(title, year, imageUrl, null, req.user._id);
+  const movie = new Movie({
+      title: title,
+      year: year,
+      imageUrl: "../badboysforlife.jpg",
+      userId: req.user
+  });
+  movie.save()
+  .then(result => {
+      console.log('Post Added Movie:' + result);
+      res.redirect('my-movies');  
+  })
+  .catch(error => {
+      console.log('Post Add Movie Error: ' + error);
+  }); 
+
+
+    
+    fetch(endpoint)
+            .then(movie => movie.json())
+             
+            .then(movie => {
+                console.log(movie);
+                console.log(IMAGE_BASE_URL);
+                console.log(IMAGE_SIZE);
+                console.log(POSTER_SIZE);
+                res.render('movies/movie', { 
+                    movie: movie,
+                    pageTitle: movie.title,
+                    imageBaseUrl: IMAGE_BASE_URL,
+                    imageSize: IMAGE_SIZE,
+                    posterSize: POSTER_SIZE,    
+                    path: 'movies/movies',
+                    activeMovies: true,
+                    isAuthenticated: req.session.isLoggedIn
+                });
+            })
+            .catch(error => console.log(error));
+     
 };
 
 exports.getMyMovies = (req, res, next) => {
