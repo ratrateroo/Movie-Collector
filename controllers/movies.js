@@ -21,27 +21,46 @@ const fetchMovies = (endpoint) => {
         )
 }
 
-exports.getMovies = (req, res, next) => {
-    
+const mymovies = {};
 
-    Movie.find(movies => {
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-        console.log(endpoint);   
-        fetch(endpoint)
+exports.getMovies = (req, res, next) => {
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    fetch(endpoint)
             .then(movies => movies.json())
+            .then(movies => movies.results)
             .then(movies => {
-                
-                console.log(movies.results[0]);
+                console.log(movies);
+                res.render('movies/movies', { 
+                    movies: movies,
+                    pageTitle: 'Movies', 
+                    path: 'movies/movies',
+                    activeMovies: true,
+                    isAuthenticated: req.session.isLoggedIn
+                });
             })
-   .catch(error => console.error('Error:', error));
-        res.render('movies/movies', { 
-            movies: movies,
-            pageTitle: 'Movies', 
-            path: 'movies/movies',
-            activeMovies: true,
-            isAuthenticated: req.session.isLoggedIn
-        });
-    });
+            .catch(error => console.log(error));
+            
+
+
+
+//     Movie.find(movies => {
+//         const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+//         console.log(endpoint);   
+//         fetch(endpoint)
+//             .then(movies => movies.json())
+//             .then(movies => {
+                
+//                 console.log(movies.results);
+//             })
+//    .catch(error => console.error('Error:', error));
+//         res.render('movies/movies', { 
+//             movies: movies,
+//             pageTitle: 'Movies', 
+//             path: 'movies/movies',
+//             activeMovies: true,
+//             isAuthenticated: req.session.isLoggedIn
+//         });
+//     });
     
 };
 
