@@ -2,8 +2,7 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 
-exports.getLogin = (req, res, next) => {    
-    console.log(req.get('Cookie'));
+exports.getLogin = (req, res, next) => {
     // const isLoggedIn = req
     // .get('Cookie')
     // .split(';')[0]
@@ -51,22 +50,22 @@ exports.getSignup = (req, res, next) => {
             if (userDoc) {
                 return res.redirect('/signup');
             }
-            return bcrypt.hash(password, 12);
-            
-        })
-        .then(hashedPassword => {
-            const user = new User({
-                title: title,
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: hashedPassword,
-                collectionMovie: { items: [] }
-            });
-            return user.save();
-        })
-        .then(resulst => {
+            return bcrypt
+            .hash(password, 12)
+            .then(hashedPassword => {
+                const user = new User({
+                    title: title,
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: hashedPassword,
+                    collectionMovie: { items: [] }
+                });
+                return user.save();
+            })
+            .then(resulst => {
             res.redirect('/login');
-        })
+            })
+        })      
         .catch(err => console.log(err));
   }
