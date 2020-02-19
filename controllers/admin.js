@@ -62,11 +62,8 @@ exports.postAddToCollection = (req, res, next) => {
                   console.log('Get My Movies: Done');
                   res.render('admin/my-movies', {
                       movies: movies,
-                      imageBaseUrl: IMAGE_BASE_URL,
-                      imageSize: IMAGE_SIZE,
-                      posterSize: POSTER_SIZE,
                       pageTitle: 'My Movies',
-                      path: 'admin/my-movies',
+                      path: 'my-movies',
                       activeMyMovies: true,
                       isAuthenticated: req.session.isLoggedIn
                   })
