@@ -1,3 +1,5 @@
+const User = require('../models/user');
+
 exports.getLogin = (req, res, next) => {    
     console.log(req.get('Cookie'));
     // const isLoggedIn = req
@@ -25,3 +27,40 @@ exports.postLogout = (req, res, next) => {
         res.redirect('/');
     });
 };
+
+
+exports.getSignup = (req, res, next) => {
+    res.render('auth/signup', {
+      path: 'admin/signup',
+      pageTitle: 'Signup',
+      isAuthenticated: false
+    });
+  }
+
+  exports.postSignup = (req, res, next) => {
+    const title = req.body.title;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
+    User.findOne({email: email})
+        .then(userDoc => {
+            if (userDoc) {
+                return res.redirect('/signup');
+            }
+            const user = new User({
+                title: title,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+                collectionMovie: { items: [] }
+            });
+            return user.save();
+        })
+        .then(resulst => {
+            res.redirect('/login');
+        })
+        .catch(err => console.log(err));
+  }
