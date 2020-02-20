@@ -39,7 +39,7 @@ exports.postAddMovies = (req, res, next) => {
 
 exports.postAddToCollection = (req, res, next) => {
 
-  const movieId = req.params.movieId;
+  const movieId = req.body.movieId;
   
   const endpoint =`${API_URL}movie/${movieId}?api_key=${API_KEY}`;
 
@@ -57,20 +57,8 @@ exports.postAddToCollection = (req, res, next) => {
             return movie.save();
             })
             .then(result => {
-              Movie.find()
-              // .select('title year -_id')
-              // .populate('userId','firstName')
-              .then(movies => {
-                  console.log('Get My Movies: Done');
-                  res.render('admin/my-movies', {
-                      movies: movies,
-                      pageTitle: 'My Movies',
-                      path: 'my-movies',
-                      activeMyMovies: true,
-                      isAuthenticated: req.session.isLoggedIn
-                  })
-              })
               
+              res.redirect('/admin/my-movies');
                      
           })
           .catch(error => {
@@ -123,24 +111,42 @@ exports.postAddToCollection = (req, res, next) => {
 };
 
 exports.getMyMovies = (req, res, next) => {
-    // console.log('my-movies.html', adminData.movies);
-    // res.sendFile(path.join(rootDir, 'views', 'my-movies.html'));
-    Movie.find()
-        // .select('title year -_id')
-        // .populate('userId','firstName')
-        .then(movies => {
+     
+    Movie.find({
+        userId: req.user._id
+      })
+      // .select('title year -_id')
+      // .populate('userId','firstName')
+      .then(movies => {
+        console.log('Get My Movies: Done');
+        res.render('admin/my-movies', {
+          movies: movies,
+          pageTitle: 'My Movies',
+          path: 'admin/my-movies',
+          activeMyMovies: true,
+          isAuthenticated: req.session.isLoggedIn
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+/*         Movie.find()
+          // .select('title year -_id')
+          // .populate('userId','firstName')
+          .then(movies => {
             console.log('Get My Movies: Done');
             res.render('admin/my-movies', {
-                movies: movies,
-                pageTitle: 'My Movies',
-                path: 'admin/my-movies',
-                activeMyMovies: true,
-                isAuthenticated: req.session.isLoggedIn
-            });
-        })
-        .catch(error => {
+              movies: movies,
+              pageTitle: 'My Movies',
+              path: 'my-movies',
+              activeMyMovies: true,
+              isAuthenticated: req.session.isLoggedIn
+            })
+          })
+          .catch(error => {
             console.log(error);
-        });
+          }); */
 };
 
 exports.getEditMovie = (req, res, next) => {

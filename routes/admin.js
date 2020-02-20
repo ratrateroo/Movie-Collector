@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/add-movies',  adminController.getAddMovies);
   
 router.post('/add-movies', adminController.postAddMovies);
-router.post('/add-to-collection/:movieId', isAuth, adminController.postAddToCollection);
+router.post('/add-to-collection', isAuth, adminController.postAddToCollection);
 
 router.get('/my-movies', isAuth, adminController.getMyMovies);
 router.get('/edit-movie/:movieId', isAuth, adminController.getEditMovie);

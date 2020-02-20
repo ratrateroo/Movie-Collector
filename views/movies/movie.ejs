@@ -36,7 +36,7 @@
                 <input type="hidden" value="<%= movie.id %>" name="movieId">
                 <button class="button" type="submit">Delete</button>
             </form>
-            <form action="/admin/add-to-collection/<%= movie.id %>" method="POST">
+            <form action="/admin/add-to-collection" method="POST">
                 <input type="hidden" value="<%= movie.id %>" name="movieId">
                 <input type="hidden" name="_csrf" value="<%= csrfToken%>">
 
