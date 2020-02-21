@@ -27,13 +27,13 @@
                 <input type="text" id="last-name" placeholder="Pogi" value="<%= oldInput.lastName%>" name="lastName"  >
 
                 <label for="email">E-Mail</label>
-                <input type="email" id="email" value="<%= oldInput.email%>" name="email" >
+                <input class="<%= validationErrors.find(e=>e.param === 'email') ? 'invalid' : '' %>" type="email" id="email" value="<%= oldInput.email%>" name="email" >
 
                 <label for="password">Password</label>
-                <input type="password" id="password"  value="<%= oldInput.password%>"name="password"  >
+                <input class="<%= validationErrors.find(e=>e.param === 'password') ? 'invalid' : '' %>" type="password" id="password"  value="<%= oldInput.password%>"name="password"  >
 
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password"  value="<%= oldInput.confirmPassword%>" name="confirmPassword"  >
+                <input class="<%= validationErrors.find(e=>e.param === 'confirmPassword') ? 'invalid' : '' %>" type="password" id="confirm-password"  value="<%= oldInput.confirmPassword%>" name="confirmPassword"  >
                 
                 <input type="hidden" name="_csrf" value="<%= csrfToken%>">
 

@@ -101,7 +101,8 @@ exports.getSignup = (req, res, next) => {
         lastName: "Pogi",
         email: "email@email.com", 
         password: "123456", 
-        confirmPassword: "123456" }
+        confirmPassword: "123456" },
+        validationErrors: []
     });
   }
 
@@ -125,7 +126,8 @@ exports.getSignup = (req, res, next) => {
                 lastName: lastName,
                 email: email, 
                 password: password, 
-                confirmPassword: req.body.confirmPassword }
+                confirmPassword: req.body.confirmPassword },
+            validationErrors: errors.array()
 
           });
     }

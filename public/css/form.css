@@ -53,3 +53,7 @@
     background: var(--GrassyGreen);
     border: #0e4f1f;
 }
+
+.invalid {
+    border-color: red;
+}
