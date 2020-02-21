@@ -102,7 +102,7 @@ exports.getSignup = (req, res, next) => {
             path: 'admin/signup',
             pageTitle: 'Signup',
             isAuthenticated: false,
-            errorMessage: errors.array()[0]
+            errorMessage: errors.array()[0].msg
           });
     }
     User.findOne({email: email})
