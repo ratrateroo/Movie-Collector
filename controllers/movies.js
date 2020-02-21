@@ -5,7 +5,7 @@ const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('.
 
 
 
-const fetchMovies = (endpoint) => {
+/* const fetchMovies = (endpoint) => {
 
     fetch(endpoint)
         .then(result => result.json())
@@ -21,18 +21,60 @@ const fetchMovies = (endpoint) => {
         )
 }
 
-
-
-exports.getMovies = (req, res, next) => {
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+const movieCollection = {};
+for (let step = 1; step < 10; step++) {
+    let endpoint = `http://api.themoviedb.org/3/movie/popular?api_key=89b4364a619aa310c8bdc1b4f924c9b8&language=en-US&page=${step}`;
     fetch(endpoint)
             .then(movies => movies.json())
             .then(movies => movies.results)
             .then(movies => {
-                console.log(movies[0]);
-                console.log(IMAGE_BASE_URL);
-                console.log(IMAGE_SIZE);
-                console.log(POSTER_SIZE);
+                {
+                    return { ...movieCollection, movies }
+                }
+            })
+            .then(result => {
+                movieCollection = result;
+                console.log(movieCollection);
+            });
+  }
+  let movieCollection = {};
+  let storeMovies = (entries) => {
+    let mergedObj = { ...entries, ...movieCollection };
+    return mergedObj;   
+  }
+  let movieCollection = {};
+  for (let step = 0; step < 10; step++) {
+    
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=89b4364a619aa310c8bdc1b4f924c9b8&language=en-US&page=' + (step+1))
+    .then(movies => movies.json())
+    .then(movies => {
+        return summary = {...movieCollection, ...movies.results};
+    })
+    .then(result => console.log(result))
+    
+    .catch(error => console.log(error));
+
+  }
+  console.log(movieCollection); */
+
+   
+  
+
+
+
+
+
+exports.getMovies = (req, res, next) => {
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    console.log(endpoint);
+    fetch(endpoint)
+            .then(movies => movies.json())
+            .then(movies => movies.results)
+            .then(movies => {
+                // console.log(movies[0]);
+                // console.log(IMAGE_BASE_URL);
+                // console.log(IMAGE_SIZE);
+                // console.log(POSTER_SIZE);
                 res.render('movies/movies', { 
                     movies: movies,
                     imageBaseUrl: IMAGE_BASE_URL,
@@ -45,6 +87,41 @@ exports.getMovies = (req, res, next) => {
                 });
             })
             .catch(error => console.log(error));
+            
+            // let movieCollection = [];
+            // for (let step = 0; step < 2; step++) {
+              
+            //   fetch('https://api.themoviedb.org/3/movie/popular?api_key=89b4364a619aa310c8bdc1b4f924c9b8&language=en-US&page=' + (step+1))
+            //   .then(movies => movies.json())
+            //   .then(movies => {
+            //       const arr = [];
+            //       arr.push(movies.results);
+            //       console.log('Array: ' + arr);
+
+            //   })
+            //   //.then(result => console.log(result))
+              
+            //   .catch(error => console.log(error));
+          
+            // }
+            //console.log(movieCollection);
+            // let objArray = [];
+            // let result = objArray.map((obj) => {
+            //     let rObj = {}
+            //         rObj[Object.key(obj)] = Object.values(obj)
+            //         return rObj
+            // })
+            // console.log(result);
+
+        //  res.render('movies/movies', { 
+        //         movies: arr,
+        //         imageBaseUrl: IMAGE_BASE_URL,
+        //         imageSize: IMAGE_SIZE,
+        //         posterSize: POSTER_SIZE,
+        //         pageTitle: 'Movies', 
+        //         path: 'movies/movies',
+        //         activeMovies: true
+        //     });
             
 
 
