@@ -66,6 +66,26 @@ function getMovies(pageNumber) {
         movieBody.appendChild(moviePoster);
         movie.appendChild(movieBody);
 
+        //movie footer
+
+        let movieFooter = document.createElement("div");
+        movieFooter.setAttribute("class", "movie__footer");
+        
+        let movieReleaseDate = document.createElement("div"); 
+        movieReleaseDate.setAttribute("class", "movie__release");
+        
+        let h4 = document.createElement("h4");
+        let releaseDate = document.createTextNode(item.release_date);
+        h4.appendChild(releaseDate);
+
+        movieReleaseDate.appendChild(h4);
+        movieFooter.appendChild(movieReleaseDate);
+         
+        movie.appendChild(movieFooter);
+         
+
+      
+
          
                     
 
