@@ -61,7 +61,16 @@ for (let step = 1; step < 10; step++) {
   
 
 
-
+  exports.getLoadMovies = (req, res, next) => {
+    const pageNumber = req.params.pageNumber;
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${pageNumber}`;
+    fetch(endpoint)
+    .then(movies => movies.json())
+    .then(result => {
+        res.json(result);
+    })
+    .catch(error => console.log(error));
+  }
 
 
 exports.getMovies = (req, res, next) => {
