@@ -11,13 +11,14 @@ router.post('/login',
     check('email')
     .isEmail()
     .withMessage('Please enter a valid email.')
-    ,
+    .normalizeEmail(),
     body(
         'password',
-        'The password must can be alphanumeric with at least 6 characters.'
+        'The password is incorrect.'
         )
         .isLength({min: 6})
-        .isAlphanumeric(),
+        .isAlphanumeric()
+        .trim()
     ]
 , authController.postLogin);
 router.get('/signup', authController.getSignup);
@@ -25,6 +26,7 @@ router.post('/signup',
     [
     check('email')
     .isEmail()
+
     .withMessage('Please enter a valid email.')
     .custom((value, { req }) => {
         // if (value === 'sample@email.com'){
@@ -38,14 +40,17 @@ router.post('/signup',
                 );
             }
         });
-    }),
+    })
+    .normalizeEmail(),
     body(
         'password',
         'The password must can be alphanumeric with at least 6 characters.'
         )
         .isLength({min: 6})
-        .isAlphanumeric(),
+        .isAlphanumeric()
+        .trim(),
     body('confirmPassword')
+        .trim()
         .custom((value, { req }) => {
             if (value !== req.body.password) {
                 throw new Error('Passwords have to match.');
