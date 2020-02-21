@@ -144,12 +144,12 @@ exports.getSignup = (req, res, next) => {
     const title = req.body.title;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
-    const imageUrl = req.file
+    const image = req.file
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
     const errors = validationResult(req);
-
+    const imageUrl = image.path;
     console.log(imageUrl);
 
     if (!errors.isEmpty()) {

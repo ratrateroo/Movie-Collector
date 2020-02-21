@@ -24,6 +24,32 @@ const store = new MongoDBStore({
 });
 const csrfProtection = csrf();
 
+const fileStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'images');
+    },
+    filename: (req, file, cb) => {
+      let dateobj = new Date();
+      //cb(null, dateobj.toISOString() + '-' + file.originalname);
+      //cb(null, new Date().toISOString() + '-' + file.originalname);
+      //cb(null, file.filename + '-' + file.originalname);
+      cb(null, Date.now().toString() + '-' + file.originalname);
+    }
+  });
+    
+  const fileFilter = (req, file, cb) => {
+    if (
+        file.mimetype === 'image/png' ||
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg'
+      ) {
+        cb(null, true);
+      } else {
+        cb(null, false);
+        console.log('error here');
+      }
+  };
+
 //app.engine('handlebars', expressHbs());
 //app.set('view engine', 'handlebars');
 //app.engine('hbs', expressHbs({extname: 'hbs', defaultLayout:'main-layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -39,7 +65,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(
-    multer({ dest: "images" }).single('image')
+    multer( { storage: fileStorage, fileFilter: fileFilter }).single('image')
   );
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
