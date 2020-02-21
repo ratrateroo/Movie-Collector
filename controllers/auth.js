@@ -57,9 +57,21 @@ exports.postLogin = (req, res, next) => {
         .then(user => {
         
             if (!user) {
-                req.flash('error', 'Invalid email or password.');
+                 
                 console.log("No user");
-                return res.redirect('/login');
+                 
+                return res.status(422).render('auth/login', {
+                    path: 'admin/login',
+                    pageTitle: 'Login',
+                    isAuthenticated: false,
+                    errorMessage: 'E-mail doesn\'t exist. ',
+                    oldInput: { 
+                         
+                        email: email, 
+                        password: password
+                    },
+                    validationErrors: [{param: 'email'}]
+                  });
             }
             bcrypt
                 .compare(password, user.password)
@@ -75,8 +87,18 @@ exports.postLogin = (req, res, next) => {
                         });
                         
                     }
-                    req.flash('error', 'Invalid email or password.');
-                    res.redirect('/login');
+                    return res.status(422).render('auth/login', {
+                        path: 'admin/login',
+                        pageTitle: 'Login',
+                        isAuthenticated: false,
+                        errorMessage: 'Wrong password.',
+                        oldInput: { 
+                             
+                            email: email, 
+                            password: password
+                        },
+                        validationErrors: [{param: 'password'}]
+                      });
                 })
                 .catch(err => {
                     console.log(err);
