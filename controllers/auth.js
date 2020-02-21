@@ -144,11 +144,14 @@ exports.getSignup = (req, res, next) => {
     const title = req.body.title;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
-    const image = req.file
+    const imageUrl = req.file
     const email = req.body.email;
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
     const errors = validationResult(req);
+
+    console.log(imageUrl);
+
     if (!errors.isEmpty()) {
         console.log(errors.array());
         return res.status(422).render('auth/signup', {
@@ -162,10 +165,11 @@ exports.getSignup = (req, res, next) => {
                 email: email, 
                 password: password, 
                 confirmPassword: req.body.confirmPassword },
-            validationErrors: errors.array()
+                validationErrors: errors.array()
 
           });
     }
+    
      bcrypt
             .hash(password, 12)
             .then(hashedPassword => {
@@ -173,6 +177,7 @@ exports.getSignup = (req, res, next) => {
                     title: title,
                     firstName: firstName,
                     lastName: lastName,
+                    imageUrl: imageUrl,
                     email: email,
                     password: hashedPassword,
                     collectionMovie: { items: [] }
