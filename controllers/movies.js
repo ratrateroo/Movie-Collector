@@ -185,16 +185,16 @@ exports.getFavorite =  (req, res, next) => {
     });
 };
 
-exports.getFavorite = (req, res, next) => {
+exports.getSavedMovies = (req, res, next) => {
     req.user
     .populate('favorite.items.movieId')
     .execPopulate()
     .then(user => {
-      const movies = user.favorite.items;
-      console.log('Favorite Movies: ' + movies);
-        res.render('movies/favorite', {
-          path: '/favorite',
-          pageTitle: 'Favorite Movies',
+      const movies = user.collectionMovie.items;
+      
+        res.render('movies/saved-movies', {
+          path: '/movies/saved-movies',
+          pageTitle: 'Saved Movies',
           movies: movies,
           isAuthenticated: req.session.isLoggedIn
         });

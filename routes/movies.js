@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.get('/', moviesController.getMovies);
 router.get('/movies/:movieId', moviesController.getMovie);
-router.get('/favorite', moviesController.getFavorite);
+router.get('/saved-movies', moviesController.getSavedMovies);
 router.post('/favorite', moviesController.postFavorite);
 module.exports = router;
