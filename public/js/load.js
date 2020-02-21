@@ -19,10 +19,60 @@ getMovies(pageNumber);
 
 function getMovies(pageNumber) {
     let theurl = 'http://localhost:3000/load-movies/' + pageNumber;
+    const mainArea = document.querySelector(".main-area");
     fetch(theurl)
     .then(response => response.json())
-    .then(result => {
-        console.log(result.results);
+    
+    .then(data => {
+        console.log(data.results);
+
+        data.results.forEach(item => {
+        //movie header
+        let movie = document.createElement("div");
+        movie.setAttribute("class", "movie");
+        
+        let movieHeader = document.createElement("div"); 
+        movieHeader.setAttribute("class", "movie__header");
+
+        let movieTitle = document.createElement("div");
+        movieTitle.setAttribute("class", "movie__title");
+
+        let h3 = document.createElement("h3");
+        let text = document.createTextNode("Movie");
+        text.textContent = item.title;
+        h3.appendChild(text);
+
+        movieTitle.appendChild(h3);
+        movieHeader.appendChild(movieTitle);
+        movie.appendChild(movieHeader);
+
+        //movie body
+
+        let movieBody = document.createElement("div");
+        movieBody.setAttribute("class", "movie__body");
+        
+        let moviePoster = document.createElement("div"); 
+        moviePoster.setAttribute("class", "movie__poster");
+        
+        let movieLink = document.createElement("a"); 
+        movieLink.setAttribute("href", "/movies/"+ item.id);
+
+        let movieImage = document.createElement("img"); 
+        movieImage.setAttribute("src", "http://image.tmdb.org/t/p/w500/" + item.poster_path);
+        movieImage.setAttribute("alt",  item.title);
+
+        movieLink.appendChild(movieImage);
+        moviePoster.appendChild(movieLink);
+        movieBody.appendChild(moviePoster);
+        movie.appendChild(movieBody);
+
+         
+                    
+
+
+        mainArea.appendChild(movie);
+
+        })
     })
     .catch(err => console.log(err));
 }
@@ -36,24 +86,3 @@ if (entries[0].isIntersecting) {
   //getData();
 }
 }
-const mainArea = document.querySelector(".main-area");
-
-let movie = document.createElement("div");
-movie.setAttribute("class", "movie");
-
-let movieHeader = document.createElement("div"); 
-movieHeader.setAttribute("class", "movieHeader");
-
-let movieTitle = document.createElement("div");
-movieTitle.setAttribute("class", "movieTitle");
-
-let h3 = document.createElement("h3");
-let text = document.createTextNode("Movie");
-h3.appendChild(text);
-
-movieTitle.appendChild(h3);
-movieHeader.appendChild(movieTitle);
-movie.appendChild(movieHeader);
-
-
-mainArea.appendChild(movie);
