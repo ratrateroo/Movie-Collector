@@ -15,7 +15,7 @@
             <a class="<%= path === '/admin/add-movies'? 'active': ''%>" href="/admin/add-movies">Add Movies</a>
         </li>
         <li class="main-header__item">
-            <a class="<%= path === 'movies/saved-movies'? 'active': ''%>" href="/favorite">Saved Movies</a>
+            <a class="<%= path === '/movies/saved-movies'? 'active': ''%>" href="/movies/saved-movies">Saved Movies</a>
         </li>
         <% } %>
 
@@ -30,6 +30,9 @@
                 <a href="/signup">Signup</a   >
             </li>
         <% } else { %>
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/edit-profile'? 'active': ''%>" href="'/admin/edit-profile'">Profile</a>
+            </li>
         <li class="main-header__item">
             <form action="/logout" method="post">
                 <input type="hidden" name="_csrf" value="<%= csrfToken%>">
