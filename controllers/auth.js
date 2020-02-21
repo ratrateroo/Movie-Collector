@@ -29,6 +29,17 @@ exports.getLogin = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
    const email = req.body.email;
    const password = req.body.password;
+
+   const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log(errors.array());
+        return res.status(422).render('auth/login', {
+            path: 'admin/login',
+            pageTitle: 'Login',
+            isAuthenticated: false,
+            errorMessage: errors.array()[0].msg
+          });
+    }
    
     User.findOne({ email: email })
         .then(user => {
@@ -84,7 +95,13 @@ exports.getSignup = (req, res, next) => {
       path: 'admin/signup',
       pageTitle: 'Signup',
       isAuthenticated: false,
-      errorMessage: message
+      errorMessage: message,
+      oldInput: {
+        firstName: "Mark",
+        lastName: "Pogi",
+        email: "email@email.com", 
+        password: "123456", 
+        confirmPassword: "123456" }
     });
   }
 
@@ -102,7 +119,14 @@ exports.getSignup = (req, res, next) => {
             path: 'admin/signup',
             pageTitle: 'Signup',
             isAuthenticated: false,
-            errorMessage: errors.array()[0].msg
+            errorMessage: errors.array()[0].msg,
+            oldInput: { 
+                firstName: firstName,
+                lastName: lastName,
+                email: email, 
+                password: password, 
+                confirmPassword: req.body.confirmPassword }
+
           });
     }
      bcrypt

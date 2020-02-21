@@ -21,19 +21,19 @@
                 </select>
 
                 <label for="first-name">First name</label>
-                <input type="text" id="first-name" placeholder="Mark" value="Mark" name="firstName"  >
+                <input type="text" id="first-name" placeholder="Mark" value="<%= oldInput.firstName%>"name="firstName"  >
 
                 <label for="last-name">Last name</label>
-                <input type="text" id="last-name" placeholder="Pogi" value="Pogi" name="lastName"  >
+                <input type="text" id="last-name" placeholder="Pogi" value="<%= oldInput.lastName%>" name="lastName"  >
 
                 <label for="email">E-Mail</label>
-                <input type="email" id="email" value="@email.com" name="email" >
+                <input type="email" id="email" value="<%= oldInput.email%>" name="email" >
 
                 <label for="password">Password</label>
-                <input type="password" id="password"  name="password"  >
+                <input type="password" id="password"  value="<%= oldInput.password%>"name="password"  >
 
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password"  placeholder="Confirm Password" name="confirmPassword"  >
+                <input type="password" id="confirm-password"  value="<%= oldInput.confirmPassword%>" name="confirmPassword"  >
                 
                 <input type="hidden" name="_csrf" value="<%= csrfToken%>">
 
