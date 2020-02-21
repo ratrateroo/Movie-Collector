@@ -21,7 +21,13 @@ exports.getLogin = (req, res, next) => {
     res.render('auth/login', {
         path: '/login',
         pageTitle: 'Login',
-        errorMessage: message
+        errorMessage: message,
+        oldInput: {
+            
+            email: "email@email.com", 
+            password: "123456"
+        },
+            validationErrors: []
     });
       
 };
@@ -37,7 +43,13 @@ exports.postLogin = (req, res, next) => {
             path: 'admin/login',
             pageTitle: 'Login',
             isAuthenticated: false,
-            errorMessage: errors.array()[0].msg
+            errorMessage: errors.array()[0].msg,
+            oldInput: { 
+                 
+                email: email, 
+                password: password
+            },
+            validationErrors: errors.array()
           });
     }
    

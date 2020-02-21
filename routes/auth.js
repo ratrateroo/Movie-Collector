@@ -6,7 +6,20 @@ const User = require('../models/user');
 const router = express.Router();
 
 router.get('/login', authController.getLogin);
-router.post('/login', authController.postLogin);
+router.post('/login',
+[
+    check('email')
+    .isEmail()
+    .withMessage('Please enter a valid email.')
+    ,
+    body(
+        'password',
+        'The password must can be alphanumeric with at least 6 characters.'
+        )
+        .isLength({min: 6})
+        .isAlphanumeric(),
+    ]
+, authController.postLogin);
 router.get('/signup', authController.getSignup);
 router.post('/signup',
     [
