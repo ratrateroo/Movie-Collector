@@ -11,7 +11,9 @@
         <% if (errorMessage) { %>
             <div class="user-message user-message--error"><%= errorMessage %></div>
            <% } %>
-
+           <div class="card__image">
+            <img src="/<%= user.imageUrl %>" alt="<%= user.fistName %>">
+        </div>
         <div class="signup-page">
             <form action="/signup" method="post" class="signup-form" novalidate enctype="multipart/form-data">
                 <label for="title">Title</label>
@@ -29,6 +31,7 @@
                 <label for="email">E-Mail</label>
                 <input class="<%= validationErrors.find(e=>e.param === 'email') ? 'invalid' : '' %>" type="email" id="email" value="<%= user.email%>" name="email" >
 
+               
                 <label for="image">Image</label>
                 <input type="file" name="image" id="image">
                                
