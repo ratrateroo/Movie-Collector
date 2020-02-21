@@ -28,6 +28,9 @@
 
                 <label for="email">E-Mail</label>
                 <input class="<%= validationErrors.find(e=>e.param === 'email') ? 'invalid' : '' %>" type="email" id="email" value="<%= user.email%>" name="email" >
+
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image">
                                
                 <input type="hidden" name="_csrf" value="<%= csrfToken%>">
 

@@ -26,6 +26,9 @@
                 <label for="last-name">Last name</label>
                 <input type="text" id="last-name" placeholder="Pogi" value="<%= oldInput.lastName%>" name="lastName"  >
 
+                <label for="image">Image</label>
+                <input type="file" name="image" id="image">
+
                 <label for="email">E-Mail</label>
                 <input class="<%= validationErrors.find(e=>e.param === 'email') ? 'invalid' : '' %>" type="email" id="email" value="<%= oldInput.email%>" name="email" >
 
