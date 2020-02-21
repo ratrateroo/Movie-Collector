@@ -24,7 +24,14 @@ router.post('/signup',
         'The password must can be alphanumeric with at least 6 characters.'
         )
         .isLength({min: 6})
-        .isAlphanumeric()
+        .isAlphanumeric(),
+    body('confirmPassword')
+        .custom((value, { req }) => {
+            if (value !== req.body.password) {
+                throw new Error('Passwords have to match.');
+            }
+            return true;
+        })
     ],
     authController.postSignup);
 router.post('/logout', authController.postLogout);
