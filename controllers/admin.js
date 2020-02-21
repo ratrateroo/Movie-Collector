@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
 const Movie = require('../models/movie');
+const User = require('../models/user');
 const { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } = require('../config/configfile');
 
 exports.getAddMovies = (req, res, next) => {
@@ -203,4 +204,20 @@ exports.getEditMovie = (req, res, next) => {
       .catch(err => console.log(err));
   };
 
+  exports.getEditProfile = (req, res, next) => {
+    const userId = req.user._id;
+
+    User.findById(userId)
+      .then(user => {
+        res.render('admin/edit-profile', {
+          pageTitle: 'Edit Profile',
+          path: '/admin/edit-profile',
+          user: user,
+          isAuthenticated: req.session.isLoggedIn,
+          errorMessage: null,
+          validationErrors: []
+        });
+      })
+      .catch(err => console.log(err));
+  };
   

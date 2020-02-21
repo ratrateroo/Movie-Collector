@@ -17,6 +17,8 @@ router.get('/my-movies', isAuth, adminController.getMyMovies);
 router.get('/edit-movie/:movieId', isAuth, adminController.getEditMovie);
 router.post('/edit-movie', adminController.postEditMovie);
 router.post('/delete-movie', adminController.postDeleteMovie);
+
+router.get('/edit-profile', adminController.getEditProfile);
 module.exports = router;
 // exports.routes = router;
 // exports.movies = movies;
